@@ -282,15 +282,24 @@
                     </li>
                 </ul>
             </li>
-            <li class="sidebar-title">
-                Other
-            </li>
             <li>
-                <a href="#"><i class="material-icons-two-tone">bookmark</i>Documentation</a>
+                <a href="#"><i class="material-icons-two-tone">person</i><span style="color: lawngreen; !important;">{{ auth()->user()->name }}</span><i class="material-icons has-sub-menu">keyboard_arrow_right</i></a>
+                <ul class="sub-menu">
+                    <li>
+                        <a href="header-basic.html">Profile</a>
+                    </li>
+                    <li>
+                        <a href="header-full-width.html">Settings</a>
+                    </li>
+                    <li>
+                        <form action="{{ route('logout') }}" method="POST">
+                            @csrf
+                            <a onclick="event.preventDefault(); this.closest('form').submit();" href="#" class="text-danger">Logout</a>
+                        </form>
+                    </li>
+                </ul>
             </li>
-            <li>
-                <a href="#"><i class="material-icons-two-tone">access_time</i>Change Log</a>
-            </li>
+
         </ul>
     </div>
 </div>

@@ -1,47 +1,53 @@
-<x-guest-layout>
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
+@extends("admin.layouts.auth")
+@section("title")
+    Giriş Yap
+@endsection
 
-    <form method="POST" action="{{ route('login') }}">
-        @csrf
+@section("content")
+    <div class="app app-auth-sign-in align-content-stretch d-flex flex-wrap justify-content-end">
+        <div class="app-auth-background">
 
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
-
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
-
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="current-password" />
-
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
-
-        <!-- Remember Me -->
-        <div class="block mt-4">
-            <label for="remember_me" class="inline-flex items-center">
-                <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
-                <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-            </label>
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
-                    {{ __('Forgot your password?') }}
-                </a>
+        <div class="app-auth-container">
+            <div class="logo">
+                <a href="index.html">Neptune</a>
+            </div>
+            @if($errors->any())
+                @foreach($errors->all() as $error)
+                    <div class="alert alert-danger">
+                        {{ $error }}
+                    </div>
+                @endforeach
             @endif
+            <form action="{{ route('login') }}" method="POST">
+                @csrf
+                <div class="auth-credentials m-b-xxl">
+                    <label for="signInEmail" class="form-label">Email</label>
+                    <input
+                        type="email"
+                        class="form-control m-b-md"
+                        id="signInEmail"
+                        aria-describedby="signInEmail"
+                        placeholder="example@neptune.com"
+                        name="email"
+                        value=" {{ old('email') }}"
+                    >
 
-            <x-primary-button class="ml-3">
-                {{ __('Log in') }}
-            </x-primary-button>
+                    <label for="signInPassword" class="form-label">Parola</label>
+                    <input type="password" class="form-control" id="signInPassword" aria-describedby="signInPassword"
+                           placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;" name="password">
+                </div>
+
+                <div class="auth-submit text-center">
+                    <button type="submit" class="btn btn-primary" style="width: 50%">Giriş Yap</button>
+                </div>
+                <div class="divider"></div>
+                <div class="auth-alts">
+                    <a href="#" class="auth-alts-google"></a>
+                    <a href="#" class="auth-alts-facebook"></a>
+                    <a href="#" class="auth-alts-twitter"></a>
+                </div>
+            </form>
         </div>
-    </form>
-</x-guest-layout>
+    </div>
+@endsection
