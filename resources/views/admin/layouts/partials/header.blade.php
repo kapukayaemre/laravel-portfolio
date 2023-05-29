@@ -65,23 +65,23 @@
                     </li>
 
                     <li class="nav-item hidden-on-mobile">
-                        <a class="nav-link language-dropdown-toggle" style="color: lawngreen; !important;" href="#" id="languageDropDown" data-bs-toggle="dropdown"><strong>{{ auth()->user()->name }}</strong></a>
+                        <a class="nav-link language-dropdown-toggle" style="color: lawngreen; !important;" href="#" id="languageDropDown" data-bs-toggle="dropdown"><strong>{{ auth()->user()->first_name }}</strong></a>
                         <ul class="dropdown-menu dropdown-menu-end language-dropdown" aria-labelledby="languageDropDown">
                             <li>
-                                <a class="dropdown-item" href="#">
-                                    <img src="{{ asset('../../assets/images/icons/user.png') }}" alt="">Profile
+                                <a class="dropdown-item" href="{{ route('profile.edit') }}">
+                                    <img src="{{ asset('../../assets/images/icons/user.png') }}" alt="">Profil
                                 </a>
                             </li>
                             <li>
                                 <a class="dropdown-item" href="#">
-                                    <img src="{{ asset('../../assets/images/icons/cog.png') }}" alt="">Settings
+                                    <img src="{{ asset('../../assets/images/icons/cog.png') }}" alt="">Ayarlar
                                 </a>
                             </li>
                             <li>
                                 <form action="{{ route('logout') }}" method="POST">
                                     @csrf
                                     <a onclick="event.preventDefault(); this.closest('form').submit();" class="dropdown-item text-danger" href="#">
-                                        <img src="{{ asset('../../assets/images/icons/logout.png') }}" alt="">Logout
+                                        <img src="{{ asset('../../assets/images/icons/logout.png') }}" alt="">Çıkış
                                     </a>
                                 </form>
                             </li>

@@ -17,13 +17,18 @@ class PasswordController extends Controller
     {
         $validated = $request->validateWithBag('updatePassword', [
             'current_password' => ['required', 'current_password'],
-            'password' => ['required', Password::defaults(), 'confirmed'],
+            'password'         => ['required', Password::defaults(), 'confirmed'],
+        ], [
+            'current_password.required'        => 'Mevcut şifre alanı boş bırakılamaz',
+            'current_password.curren_password' => 'Girilen şifre mevcut şifreyle eşleşmiyor',
+            'password.required'                => 'Şifre alanı boş bırakılamaz'
         ]);
 
         $request->user()->update([
             'password' => Hash::make($validated['password']),
         ]);
 
+        toastr()->success('Parola Başarıyla Güncellendi');
         return back()->with('status', 'password-updated');
     }
 }

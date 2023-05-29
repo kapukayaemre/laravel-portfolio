@@ -283,7 +283,7 @@
                 </ul>
             </li>
             <li>
-                <a href="#"><i class="material-icons-two-tone">person</i><span style="color: lawngreen; !important;">{{ auth()->user()->name }}</span><i class="material-icons has-sub-menu">keyboard_arrow_right</i></a>
+                <a href="#"><i class="material-icons-two-tone">person</i><span style="color: lawngreen; !important;">{{ auth()->user()->first_name }}</span><i class="material-icons has-sub-menu">keyboard_arrow_right</i></a>
                 <ul class="sub-menu">
                     <li>
                         <a href="header-basic.html">Profile</a>
