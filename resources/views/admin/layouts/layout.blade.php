@@ -44,12 +44,6 @@
 <div class="app align-content-stretch d-flex flex-wrap">
     @include('admin.layouts.partials.sidebar')
     <div class="app-container">
-        <div class="search">
-            <form>
-                <input class="form-control" type="text" placeholder="Type here..." aria-label="Search">
-            </form>
-            <a href="#" class="toggle-search"><i class="material-icons">close</i></a>
-        </div>
         @include('admin.layouts.partials.header')
         @yield('content')
     </div>
