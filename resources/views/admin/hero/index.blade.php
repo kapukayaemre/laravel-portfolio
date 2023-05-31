@@ -8,7 +8,9 @@
                         <h2 class="card-title text-center">Hero Section</h2>
                     </div>
                     <div class="card-body">
-                        <form action="" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('admin.hero.update', 1) }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            @method('PUT')
                             <p class="card-description text-center">You can manage hero section on this page</p>
                             <div class="example-container">
                                 <div class="example-content">
@@ -16,7 +18,7 @@
                                     <input type="text" class="form-control form-control-solid-bordered m-b-sm" aria-describedby="solidBoderedInputExample" placeholder="Title" name="title" id="title">
 
                                     <label for="sub_title" class="form-label m-t-sm">Subtitle</label>
-                                    <textarea class="form-control form-control-solid-bordered m-b-sm" name="description" id="sub_title" cols="30" rows="5" placeholder="Subtitle" style="resize: none"></textarea>
+                                    <textarea class="form-control form-control-solid-bordered m-b-sm" name="sub_title" id="sub_title" cols="30" rows="5" placeholder="Subtitle" style="resize: none"></textarea>
 
                                     <label for="button_text" class="form-label m-t-sm">Button Text</label>
                                     <input type="text" class="form-control form-control-solid-bordered m-b-sm" aria-describedby="solidBoderedInputExample" placeholder="Title" name="button_text" id="button_text">
@@ -29,9 +31,8 @@
                                     <div class="form-text m-b-sm"> The image size must be lower than 5mb</div>
 
 
-                                    <hr>
                                     <div class="col-6 mx-auto mt-2">
-                                        <button type="button" class="btn btn-success btn-rounded w-100" id="btnSave">
+                                        <button type="submit" class="btn btn-success btn-rounded w-100">
                                             Update
                                         </button>
                                     </div>

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\HeroUpdateRequest;
+use App\Models\Hero;
 use Illuminate\Http\Request;
 
 class HeroController extends Controller
@@ -50,9 +52,60 @@ class HeroController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(HeroUpdateRequest $request, $id)
     {
-        //
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imageName = time() . $image->getClientOriginalName();
+            $image->move(public_path('/uploads'), $imageName);
+            $imagePath = "/uploads/" . $imageName;
+        }
+
+        $heroData = [
+            'title'       => $request->title,
+            'sub_title'   => $request->sub_title,
+            'button_text' => $request->button_text,
+            'button_url'  => $request->button_url
+        ];
+
+        /**? Before the save new datas getting old datas for unlink old image*/
+        $hero = Hero::find($id);
+
+        if ($request->hasFile('image')) {
+            $heroData['image'] = $imagePath;
+
+            /**? if there is a data and data have image */
+            if ($hero && $hero->image) {
+                $oldImagePath = public_path($hero->image);
+                if (file_exists($oldImagePath)) {
+                    unlink($oldImagePath);
+                }
+            }
+        } else {
+            /**? if user didn't send an image set null image column on database */
+            $heroData['image'] = null;
+
+            /**? if user didn't send an image but old data has an image we need to remove it */
+            if ($hero && $hero->image) {
+                $oldImagePath = public_path($hero->image);
+                if (file_exists($oldImagePath)) {
+                    unlink($oldImagePath);
+                }
+            }
+        }
+
+        Hero::updateOrCreate(['id' => $id], $heroData);
+
+//        toastr()->success('Updated Successfully', 'Success');
+
+         flash()
+            ->option('position', 'top-center')
+            ->addSuccess('Updated Successfully !');
+        /* notyf()
+            ->position('x', 'center')
+            ->position('y', 'top')
+            ->addSuccess("Updated Successfully !"); */
+        return redirect()->back();
     }
 
     /**

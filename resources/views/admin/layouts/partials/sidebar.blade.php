@@ -21,11 +21,11 @@
                 Sections
             </li>
             {{--? Hero Section --}}
-            <li>
+            <li class="{{ Route::is('admin.hero.*') ? 'open' : '' }}">
                 <a href="#"><i class="material-icons-two-tone">burst_mode</i>Hero Section<i class="material-icons has-sub-menu">keyboard_arrow_right</i></a>
                 <ul class="sub-menu">
                     <li>
-                        <a href="{{ route('admin.hero.index') }}">Hero</a>
+                        <a href="{{ route('admin.hero.index') }}" class="{{ Route::is('admin.hero.index') ? 'active' : '' }}">Hero</a>
                     </li>
                     <li>
                         <a href="header-full-width.html">Test</a>

@@ -18,19 +18,22 @@
           rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600;700;800&display=swap"
           rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
-          rel="stylesheet">
-    <link href="{{ asset('../../assets/plugins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('../../assets/plugins/perfectscroll/perfect-scrollbar.css') }}" rel="stylesheet">
-    <link href="{{ asset('../../assets/plugins/pace/pace.css') }}" rel="stylesheet">
-
+    <link
+        href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
+        rel="stylesheet">
+    <link href="{{ asset('assets/plugins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/plugins/perfectscroll/perfect-scrollbar.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/plugins/pace/pace.css') }}" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
 
     <!-- Theme Styles -->
-    <link href="{{ asset('../../assets/css/main.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('../../assets/css/custom.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/main.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/custom.css') }}" rel="stylesheet">
 
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('../../assets/images/neptune.png') }}"/>
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('../../assets/images/neptune.png') }}"/>
+
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets/images/neptune.png') }}"/>
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/images/neptune.png') }}"/>
+    @yield('css')
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -43,20 +46,55 @@
 
 <div class="app align-content-stretch d-flex flex-wrap">
     @include('admin.layouts.partials.sidebar')
+    @include('admin.layouts.partials.header')
     <div class="app-container">
-        @include('admin.layouts.partials.header')
-        @yield('content')
+        <div class="app-content">
+            <div class="content-wrapper">
+                <div class="container">
+                    @yield('content')
+                </div>
+            </div>
+        </div>
     </div>
+    @if ($errors->any())
+            @foreach ($errors->all() as $error)
+                @php
+                    /* notyf()
+                        ->position('x', 'center')
+                        ->position('y', 'top')
+                        ->addError($error); */
+
+                     flash()
+                    ->option('position', 'top-center')
+                    ->addError($error)
+                @endphp
+            @endforeach
+    @endif
 </div>
 
 <!-- Javascripts -->
-<script src="{{ asset('../../assets/plugins/jquery/jquery-3.5.1.min.js') }}"></script>
-<script src="{{ asset('../../assets/plugins/bootstrap/js/bootstrap.min.js') }}"></script>
-<script src="{{ asset('../../assets/plugins/perfectscroll/perfect-scrollbar.min.js') }}"></script>
-<script src="{{ asset('../../assets/plugins/pace/pace.min.js') }}"></script>
-<script src="{{ asset('../../assets/plugins/apexcharts/apexcharts.min.js') }}"></script>
-<script src="{{ asset('../../assets/js/main.min.js') }}"></script>
-<script src="{{ asset('../../assets/js/custom.js') }}"></script>
-<script src="{{ asset('../../assets/js/pages/dashboard.js') }}"></script>
+<script src="{{ asset('assets/plugins/jquery/jquery-3.5.1.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/bootstrap/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset("assets/plugins/bootstrap/js/bootstrap.bundle.min.js") }}"></script>
+<script src="{{ asset('assets/plugins/perfectscroll/perfect-scrollbar.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/pace/pace.min.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+{{--<script src="{{ asset('assets/plugins/apexcharts/apexcharts.min.js') }}"></script>--}}
+<script src="{{ asset('assets/js/main.min.js') }}"></script>
+<script src="{{ asset('assets/js/custom.js') }}"></script>
+{{--<script src="{{ asset('assets/js/pages/dashboard.js') }}"></script>--}}
+
+
+
+<!-- Show Dynamic Validation Errors -->
+{{--@if ($errors->any())
+    <script>
+        @foreach ($errors->all() as $error)
+            toastr.error('{{ $error }}');
+        @endforeach
+    </script>
+@endif--}}
+
+@yield('js')
 </body>
 </html>
