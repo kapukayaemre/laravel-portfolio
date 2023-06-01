@@ -44,8 +44,8 @@
 
 <div class="app align-content-stretch d-flex flex-wrap">
     @include('admin.layouts.partials.sidebar')
-    @include('admin.layouts.partials.header')
     <div class="app-container">
+        @include('admin.layouts.partials.header')
         <div class="app-content">
             <div class="content-wrapper">
                 <div class="container">

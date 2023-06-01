@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\HeroUpdateRequest;
 use App\Models\Hero;
 use Illuminate\Http\Request;
+use File;
 
 class HeroController extends Controller
 {
@@ -55,39 +56,30 @@ class HeroController extends Controller
      */
     public function update(HeroUpdateRequest $request, $id)
     {
-        if ($request->hasFile('image')) {
-            $image = $request->file('image');
-            $imageName = time() . $image->getClientOriginalName();
-            $image->move(public_path('/uploads'), $imageName);
-            $imagePath = "/uploads/" . $imageName;
-        }
+        $hero = Hero::first();
 
-        $heroData = [
-            'title'       => $request->title,
-            'sub_title'   => $request->sub_title,
-            'button_text' => $request->button_text,
-            'button_url'  => $request->button_url
-        ];
-
-        /**? Before the save new datas getting old datas for unlink old image*/
-        $hero = Hero::find($id);
-
-        if ($request->hasFile('image')) {
-            $heroData['image'] = $imagePath;
-
-            /**? if there is a data and data have image */
-            if ($hero && $hero->image) {
-                $oldImagePath = public_path($hero->image);
-                if (file_exists($oldImagePath)) {
-                    unlink($oldImagePath);
-                }
+        if($request->hasFile('image')){
+            if($hero && File::exists(public_path($hero->image))) {
+                File::delete(public_path($hero->image));
             }
-        } else {
-            /**? if user didn't send an image set null image column on database */
-            $heroData['image'] = null;
+
+            $image = $request->file('image');
+            $imageName = time().$image->getClientOriginalName();
+            $image->move(public_path('/uploads'), $imageName);
+
+            $imagePath = "/uploads/".$imageName;
         }
 
-        Hero::updateOrCreate(['id' => $id], $heroData);
+        Hero::updateOrCreate(
+            ['id' => $id],
+            [
+                'title' => $request->title,
+                'sub_title' => $request->sub_title,
+                'button_text' => $request->button_text,
+                'button_url' => $request->button_url,
+                'image' => isset($imagePath) ? $imagePath : $hero->image,
+            ]
+        );
 
         flash()
             ->option('position', 'top-center')
