@@ -34,7 +34,7 @@
             </li>
 
             {{--? Services Section --}}
-            <li>
+            <li class="{{ Route::is('admin.services.*') ? 'open' : '' }}">
                 <a href="#"><i class="material-icons-two-tone">lightbulb</i>Services Section<i class="material-icons has-sub-menu">keyboard_arrow_right</i></a>
                 <ul class="sub-menu">
                     <li>

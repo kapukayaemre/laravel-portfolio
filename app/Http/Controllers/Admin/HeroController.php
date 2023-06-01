@@ -96,15 +96,10 @@ class HeroController extends Controller
 
         Hero::updateOrCreate(['id' => $id], $heroData);
 
-//        toastr()->success('Updated Successfully', 'Success');
-
-         flash()
+        flash()
             ->option('position', 'top-center')
             ->addSuccess('Updated Successfully !');
-        /* notyf()
-            ->position('x', 'center')
-            ->position('y', 'top')
-            ->addSuccess("Updated Successfully !"); */
+
         return redirect()->back();
     }
 

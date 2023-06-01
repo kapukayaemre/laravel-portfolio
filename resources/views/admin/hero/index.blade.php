@@ -31,6 +31,7 @@
                                     <div class="form-text m-b-sm"> The image size must be lower than 5mb</div>
 
 
+                                    <hr>
                                     <div class="col-6 mx-auto mt-2">
                                         <button type="submit" class="btn btn-success btn-rounded w-100">
                                             Update
