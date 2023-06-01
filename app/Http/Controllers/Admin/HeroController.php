@@ -14,7 +14,8 @@ class HeroController extends Controller
      */
     public function index()
     {
-        return view('admin.hero.index');
+        $hero = Hero::query()->where('id', 1)->first();
+        return view('admin.hero.index', compact('hero'));
     }
 
     /**
@@ -84,14 +85,6 @@ class HeroController extends Controller
         } else {
             /**? if user didn't send an image set null image column on database */
             $heroData['image'] = null;
-
-            /**? if user didn't send an image but old data has an image we need to remove it */
-            if ($hero && $hero->image) {
-                $oldImagePath = public_path($hero->image);
-                if (file_exists($oldImagePath)) {
-                    unlink($oldImagePath);
-                }
-            }
         }
 
         Hero::updateOrCreate(['id' => $id], $heroData);
