@@ -1,4 +1,7 @@
 @extends('admin.layouts.layout')
+@section('title')
+    Hero
+@endsection
 @section('content')
     <div class="app-content">
         <div class="content-wrapper">
@@ -71,7 +74,7 @@
                                     <img width="200px" id="showImage" class="rounded avatar-lg" src="{{ $hero->image ? $hero->image : url('uploads/no_image.jpg') }}">
 
                                     <div class="col-6 mx-auto mt-2">
-                                        <button type="submit" class="btn btn-success btn-rounded w-100">
+                                        <button type="submit" class="btn btn-success btn-rounded btn-style-light w-100">
                                             Update
                                         </button>
                                     </div>

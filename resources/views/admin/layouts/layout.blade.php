@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,10 +7,11 @@
     <meta name="description" content="Responsive Admin Dashboard Template">
     <meta name="keywords" content="admin,dashboard">
     <meta name="author" content="stacks">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- The above 6 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
     <!-- Title -->
-    <title>Neptune - Responsive Admin Dashboard Template</title>
+    <title>@yield('title')</title>
 
     <!-- Styles -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -23,6 +24,7 @@
     <link href="{{ asset('assets/plugins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/plugins/perfectscroll/perfect-scrollbar.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/plugins/pace/pace.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/iziToast.min.css') }}" rel="stylesheet">
 
 
     <!-- Theme Styles -->
@@ -70,10 +72,19 @@
 <script src="{{ asset('assets/plugins/bootstrap/js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('assets/plugins/perfectscroll/perfect-scrollbar.min.js') }}"></script>
 <script src="{{ asset('assets/plugins/pace/pace.min.js') }}"></script>
+<script src="{{ asset('assets/js/iziToast.min.js') }}"></script>
 {{--<script src="{{ asset('assets/plugins/apexcharts/apexcharts.min.js') }}"></script>--}}
 <script src="{{ asset('assets/js/main.min.js') }}"></script>
 <script src="{{ asset('assets/js/custom.js') }}"></script>
 {{--<script src="{{ asset('assets/js/pages/dashboard.js') }}"></script>--}}
+<script>
+    /** Ajax Form İşlemlerinde Token Oluşturmak İçin */
+    $.ajaxSetup({
+        headers: {
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
+        }
+    });
+</script>
 @yield('js')
 </body>
 </html>
