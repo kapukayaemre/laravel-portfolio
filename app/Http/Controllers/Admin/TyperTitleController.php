@@ -47,7 +47,6 @@ class TyperTitleController extends Controller
                 ->json(['status' => 'error', 'message' => 'Kayıt Başarısız'])
                 ->setStatusCode(401);
         }
-
     }
 
     /**
@@ -61,24 +60,53 @@ class TyperTitleController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(int $id)
     {
-        //
+        $title = TyperTitle::findOrFail($id);
+        return view('admin.typer-title.edit', compact('title'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, int $id)
     {
-        //
+        $request->validate([
+            'title' => 'required|max:200'
+        ]);
+
+        $update = TyperTitle::query()->where('id', $id)->update([
+           'title' => $request->title
+        ]);
+
+        if ($update) {
+            return response()
+                ->json(['status' => 'success', 'message' => 'Güncelleme Başarılı'])
+                ->setStatusCode(200);
+        } else {
+            return response()
+                ->json(['status' => 'error', 'message' => 'Güncelleme Başarısız'])
+                ->setStatusCode(401);
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(int $id)
     {
-        //
+        $delete = TyperTitle::findOrFail($id);
+        $delete->delete();
+
+        if ($delete) {
+            return response()
+                ->json(['status' => 'success', 'message' => 'Silme İşlemi Başarılı'])
+                ->setStatusCode(200);
+        } else {
+            return response()
+                ->json(['status' => 'error', 'message' => 'Silme İşlemi Başarısız'])
+                ->setStatusCode(401);
+        }
+
     }
 }

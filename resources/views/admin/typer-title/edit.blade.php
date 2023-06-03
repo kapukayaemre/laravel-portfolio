@@ -8,11 +8,12 @@
             <div class="container">
                 <div class="card">
                     <div class="card-header">
-                        <h2 class="card-title text-center">Hareketli Başlık Ekle</h2>
+                        <h2 class="card-title text-center">Hareketli Başlık Düzenle</h2>
                     </div>
                     <div class="card-body">
                         <form action="" method="POST" id="submitForm">
                             @csrf
+                            @method('PUT')
                             <p class="card-description text-center">Buradan arayüzdeki hareketli başlığı güncelleyebilirsin</p>
                             <div class="example-container">
                                 <div class="example-content">
@@ -24,13 +25,13 @@
                                         placeholder="Başlık"
                                         name="title"
                                         id="title"
-                                        value="{{ old('title') }}"
+                                        value="{{ old('title', $title->title) }}"
                                     >
 
 
                                     <div class="col-6 mx-auto mt-2">
                                         <button type="submit" class="btn btn-success btn-rounded btn-style-light w-100">
-                                            Ekle
+                                            Güncelle
                                         </button>
                                     </div>
                                 </div>
@@ -59,7 +60,7 @@
                                         <p class="text-center">Mevcut Butonları Kullanarak Sonraki İşleminizi Gerçekleştirebilirsiniz </p>
                                     </div>
                                     <div class="modal-footer d-flex justify-content-center">
-                                        <a href="" class="btn btn-success btn-style-light btn-lg" data-bs-dismiss="modal"><i class="material-icons">add</i>Yeni Ekle</a>
+                                        <a href="{{ route('admin.typer-title.create') }}" class="btn btn-success btn-style-light btn-lg"><i class="material-icons">add</i>Yeni Ekle</a>
                                         <a href="{{ route('admin.typer-title.index') }}" class="btn btn-primary btn-style-light btn-lg"><i class="material-icons">list</i>Listeye Git</a>
                                     </div>
                                 </div>
@@ -103,7 +104,7 @@
                 {
                     $.ajax({
                         type: 'POST',
-                        url: '{{ route("admin.typer-title.store") }}',
+                        url: '{{ route("admin.typer-title.update", $title->id) }}',
                         data: $('#submitForm').serialize(),
                         success: function (response) {
                             /** Controller tarafından dönen response a göre alert tetiklenir */
@@ -114,7 +115,7 @@
                                     messageSize : '20px',
                                     titleSize: '20px',
                                     title: 'Başarılı',
-                                    message: 'Kayıt İşlemi Başarılı',
+                                    message: 'Güncelleme İşlemi Başarılı',
                                     position: 'topCenter',
                                 });
 

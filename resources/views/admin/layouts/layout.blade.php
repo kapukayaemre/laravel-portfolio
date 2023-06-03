@@ -79,13 +79,71 @@
 <script src="{{ asset('assets/js/main.min.js') }}"></script>
 <script src="{{ asset('assets/js/custom.js') }}"></script>
 {{--<script src="{{ asset('assets/js/pages/dashboard.js') }}"></script>--}}
+
+
 <script>
-    /** Ajax Form İşlemlerinde Token Oluşturmak İçin */
-    $.ajaxSetup({
-        headers: {
-            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
-        }
-    });
+    /*** Silmek İstediğinize Emin misiniz? */
+    $(document).ready(function () {
+        /*** Ajax Form İşlemlerinde Token Oluşturmak İçin */
+        $.ajaxSetup({
+            headers: {
+                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
+            }
+        });
+
+
+        $("body").on('click', '.delete-item', function (event) {
+            event.preventDefault();
+            let deleteURL = $(this).attr('href');
+
+            iziToast.question({
+                messageSize : '20px',
+                titleSize: '20px',
+                position: 'topCenter',
+                timeout: '',
+                title: 'Uyarı',
+                message: 'Silmek istediğinize emin misiniz?',
+                buttons: [
+                    [
+                        '<button type="submit">Evet</button>',
+                        function (instance, toast) {
+                            $.ajax({
+                                type: 'DELETE',
+                                url: deleteURL,
+                                success : function (response) {
+                                    if(response.status === 'success'){
+                                        iziToast.success({
+                                            messageSize : '20px',
+                                            titleSize: '20px',
+                                            title: 'İşlem Başarılı',
+                                            message: 'Silme İşlemi Başarılı',
+                                            position: 'topCenter'
+                                        });
+
+                                        $("#triggerModal").click();
+                                    }
+                                },
+                                error: function (xhr, status, error) {
+                                    console.log(error);
+                                }
+
+                            })
+                            instance.hide({ transitionOut: 'fadeOut' }, toast, 'button');
+                        },
+                        true
+                    ],
+                    [
+                        '<button>Hayır</button>',
+                        function (instance, toast) {
+
+                            instance.hide({ transitionOut: 'fadeOut' }, toast, 'button');
+                        }
+                    ]
+                ]
+            });
+        })
+    })
+
 </script>
 @yield('js')
 @stack('scripts')

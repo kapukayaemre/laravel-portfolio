@@ -25,7 +25,7 @@
                 <a href="#"><i class="material-icons-two-tone">burst_mode</i>Ana Resim Bölümü<i class="material-icons has-sub-menu">keyboard_arrow_right</i></a>
                 <ul class="sub-menu">
                     <li>
-                        <a href="{{ route('admin.typer-title.index') }}" class="{{ Route::is('admin.typer-title.index') ? 'active' : '' }}">Hareketli Başlık</a>
+                        <a href="{{ route('admin.typer-title.index') }}" class="{{ Route::is('admin.typer-title.*') ? 'active' : '' }}">Hareketli Başlık</a>
                     </li>
                     <li>
                         <a href="{{ route('admin.hero.index') }}" class="{{ Route::is('admin.hero.index') ? 'active' : '' }}">Ana Resim</a>

@@ -30,7 +30,7 @@ class TyperTitleDataTable extends DataTable
                 return Carbon::parse($query->updated_at)->format('d.m.Y H:i');
             })
             ->addColumn('action', function ($query) {
-                return '<a href="'. route('admin.typer-title.edit', $query->id) .'" class="btn btn-warning btn-style-light">Düzenle</a>&nbsp;<a href="'. route('admin.typer-title.destroy', $query->id) .'" class="btn btn-danger btn-style-light">Sil</a>';
+                return '<a href="'. route('admin.typer-title.edit', $query->id) .'" class="btn btn-warning btn-style-light">Düzenle</a>&nbsp;<a href="'. route('admin.typer-title.destroy', $query->id) .'" class="btn btn-danger btn-style-light delete-item">Sil</a>';
             })
             ->setRowId('id');
     }
@@ -53,7 +53,7 @@ class TyperTitleDataTable extends DataTable
                     ->columns($this->getColumns())
                     ->minifiedAjax()
                     //->dom('Bfrtip')
-                    ->orderBy(1)
+                    ->orderBy(0)
                     ->selectStyleSingle()
                     ->buttons([]);
     }
