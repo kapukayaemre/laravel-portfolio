@@ -12,6 +12,7 @@
                     </div>
                     <div class="card-body">
                         <form action="" method="POST" id="submitForm">
+                            @csrf
                             <p class="card-description text-center">Buradan arayüzdeki hareketli başlığı güncelleyebilirsin</p>
                             <div class="example-container">
                                 <div class="example-content">

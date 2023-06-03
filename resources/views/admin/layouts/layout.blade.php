@@ -21,15 +21,17 @@
           rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
           rel="stylesheet">
+
     <link href="{{ asset('assets/plugins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/plugins/perfectscroll/perfect-scrollbar.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/plugins/pace/pace.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/iziToast.min.css') }}" rel="stylesheet">
-
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     <!-- Theme Styles -->
     <link href="{{ asset('assets/css/main.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/custom.css') }}" rel="stylesheet">
+
 
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets/images/neptune.png') }}"/>
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/images/neptune.png') }}"/>
@@ -69,10 +71,10 @@
 
 <!-- Javascripts -->
 <script src="{{ asset('assets/plugins/jquery/jquery-3.5.1.min.js') }}"></script>
+<script src="{{ asset('assets/js/iziToast.min.js') }}"></script>
 <script src="{{ asset('assets/plugins/bootstrap/js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('assets/plugins/perfectscroll/perfect-scrollbar.min.js') }}"></script>
 <script src="{{ asset('assets/plugins/pace/pace.min.js') }}"></script>
-<script src="{{ asset('assets/js/iziToast.min.js') }}"></script>
 {{--<script src="{{ asset('assets/plugins/apexcharts/apexcharts.min.js') }}"></script>--}}
 <script src="{{ asset('assets/js/main.min.js') }}"></script>
 <script src="{{ asset('assets/js/custom.js') }}"></script>
@@ -86,5 +88,6 @@
     });
 </script>
 @yield('js')
+@stack('scripts')
 </body>
 </html>
