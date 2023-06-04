@@ -1,6 +1,6 @@
 @extends('admin.layouts.layout')
 @section('title')
-    Typer Title
+    Hizmetler
 @endsection
 @section('content')
     <div class="app-content">
@@ -8,9 +8,9 @@
             <div class="container">
                 <div class="card">
                     <div class="card-header">
-                        <h2 class="card-title text-center">Tüm Başlıklar</h2>
+                        <h2 class="card-title text-center">Hizmetler</h2>
                         <div class="d-flex justify-content-end">
-                            <a href="{{ route('admin.typer-title.create') }}" class="btn btn-success btn-style-light"><i class="material-icons">add</i> &nbsp; Yeni</a>
+                            <a href="{{ route('admin.service.create') }}" class="btn btn-success btn-style-light"><i class="material-icons">add</i> &nbsp; Yeni</a>
                         </div>
                     </div>
                     <div class="card-body table-responsive">

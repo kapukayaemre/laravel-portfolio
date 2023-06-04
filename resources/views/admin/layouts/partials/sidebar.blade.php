@@ -34,16 +34,8 @@
             </li>
 
             {{--? Services Section --}}
-            <li class="{{ Route::is('admin.services.*') ? 'open' : '' }}">
-                <a href="#"><i class="material-icons-two-tone">lightbulb</i>Services Section<i class="material-icons has-sub-menu">keyboard_arrow_right</i></a>
-                <ul class="sub-menu">
-                    <li>
-                        <a href="{{ route('profile.edit') }}">Test</a>
-                    </li>
-                    <li>
-                        <a href="header-full-width.html">Test</a>
-                    </li>
-                </ul>
+            <li>
+                <a href="{{ route('admin.service.index') }}"><i class="material-icons-two-tone">lightbulb</i>Hizmetler Bölümü</a>
             </li>
 
             {{--? About Section --}}
