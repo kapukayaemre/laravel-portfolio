@@ -85,6 +85,7 @@ class HeroController extends Controller
             ->option('position', 'top-center')
             ->addSuccess('Updated Successfully !');
 
+
         return redirect()->back();
     }
 

@@ -66,22 +66,22 @@
 
                     <li class="nav-item hidden-on-mobile">
                         <a class="nav-link language-dropdown-toggle" style="color: lawngreen; !important;" href="#" id="languageDropDown" data-bs-toggle="dropdown"><strong>{{ auth()->user()->first_name }}</strong></a>
-                        <ul class="dropdown-menu dropdown-menu-end language-dropdown" aria-labelledby="languageDropDown">
+                        <ul class="dropdown-menu dropdown-menu-end language-dropdown d-flex" aria-labelledby="languageDropDown">
                             <li>
                                 <a class="dropdown-item" href="{{ route('profile.edit') }}">
-                                    <img src="{{ asset('../../assets/images/icons/user.png') }}" alt="">Profil
+                                    <img src="{{ asset('assets/images/icons/user.png') }}" alt="">Profil
                                 </a>
                             </li>
                             <li>
                                 <a class="dropdown-item" href="#">
-                                    <img src="{{ asset('../../assets/images/icons/cog.png') }}" alt="">Ayarlar
+                                    <img src="{{ asset('assets/images/icons/cog.png') }}" alt="">Ayarlar
                                 </a>
                             </li>
                             <li>
                                 <form action="{{ route('logout') }}" method="POST">
                                     @csrf
                                     <a onclick="event.preventDefault(); this.closest('form').submit();" class="dropdown-item text-danger" href="#">
-                                        <img src="{{ asset('../../assets/images/icons/logout.png') }}" alt="">Çıkış
+                                        <img src="{{ asset('assets/images/icons/logout.png') }}" alt="">Çıkış
                                     </a>
                                 </form>
                             </li>

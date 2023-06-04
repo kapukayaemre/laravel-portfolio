@@ -70,7 +70,7 @@
                                     >
                                     <div class="form-text m-b-sm"> The image size must be lower than 5mb</div>
 
-                                    <hr>
+
                                     <img width="200px" id="showImage" class="rounded avatar-lg" src="{{ $hero->image ? $hero->image : url('uploads/no_image.jpg') }}">
 
                                     <div class="col-6 mx-auto mt-2">

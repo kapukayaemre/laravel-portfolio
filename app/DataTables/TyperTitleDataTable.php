@@ -30,7 +30,7 @@ class TyperTitleDataTable extends DataTable
                 return Carbon::parse($query->updated_at)->format('d.m.Y H:i');
             })
             ->addColumn('action', function ($query) {
-                return '<a href="'. route('admin.typer-title.edit', $query->id) .'" class="btn btn-warning btn-style-light">Düzenle</a>&nbsp;<a href="'. route('admin.typer-title.destroy', $query->id) .'" class="btn btn-danger btn-style-light delete-item">Sil</a>';
+                return '<a href="'. route('admin.typer-title.edit', $query->id) .'" class="btn btn-warning btn-style-light"><i class="material-icons">edit_square</i>Düzenle</a>&nbsp;<a href="'. route('admin.typer-title.destroy', $query->id) .'" class="btn btn-danger btn-style-light delete-item"><i class="material-icons">delete</i>Sil</a>';
             })
             ->setRowId('id');
     }
@@ -83,7 +83,7 @@ class TyperTitleDataTable extends DataTable
                 ->title('İşlemler')
                 ->exportable(false)
                 ->printable(false)
-                ->width(180)
+                ->width(200)
                 ->addClass('text-center')
         ];
     }
