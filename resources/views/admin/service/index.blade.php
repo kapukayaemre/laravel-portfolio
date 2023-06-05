@@ -42,8 +42,8 @@
                     <p class="text-center">Mevcut Butonları Kullanarak Sonraki İşleminizi Gerçekleştirebilirsiniz</p>
                 </div>
                 <div class="modal-footer d-flex justify-content-center">
-                    <a href="{{ route('admin.typer-title.index') }}" class="btn btn-success btn-style-light btn-lg"><i class="material-icons">list</i>Listeye Dön</a>
-                    <a href="{{ route('admin.typer-title.create') }}" class="btn btn-primary btn-style-light btn-lg"><i class="material-icons">add</i>Yeni Ekle</a>
+                    <a href="{{ route('admin.service.index') }}" class="btn btn-success btn-style-light btn-lg"><i class="material-icons">list</i>Listeye Dön</a>
+                    <a href="{{ route('admin.service.create') }}" class="btn btn-primary btn-style-light btn-lg"><i class="material-icons">add</i>Yeni Ekle</a>
                 </div>
             </div>
         </div>

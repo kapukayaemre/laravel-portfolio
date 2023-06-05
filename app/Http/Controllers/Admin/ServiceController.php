@@ -59,24 +59,49 @@ class ServiceController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(int $id)
     {
-        //
+        $service = Service::findOrFail($id);
+        return view('admin.service.edit', compact('service'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, int $id)
     {
-        //
+        $update = Service::where('id', $id)->update([
+            'name'        => $request->name,
+            'description' => $request->description
+        ]);
+
+        if($update) {
+            return response()
+                ->json(['status' => 'success', 'message' => 'İşlem Başarılı'])
+                ->setStatusCode(200);
+        } else {
+            return response()
+                ->json(['status' => 'error', 'message' => 'İşlem Başarısız'])
+                ->setStatusCode(401);
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(int $id)
     {
-        //
+        $service = Service::findOrfail($id);
+        $delete = $service->delete();
+
+        if ($delete) {
+            return response()
+                ->json(['status' => 'success', 'message' => 'Silme İşlemi Başarılı'])
+                ->setStatusCode(200);
+        } else {
+            return response()
+                ->json(['status' => 'error', 'message' => 'Silme İşlemi Başarısız'])
+                ->setStatusCode(401);
+        }
     }
 }

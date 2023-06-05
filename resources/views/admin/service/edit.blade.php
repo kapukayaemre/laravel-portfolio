@@ -8,7 +8,7 @@
             <div class="container">
                 <div class="card">
                     <div class="card-header">
-                        <h2 class="card-title text-center">Hizmet Ekle</h2>
+                        <h2 class="card-title text-center">Hizmet Düzenle</h2>
                     </div>
                     <div class="card-body">
                         <form action="" method="POST" id="submitForm">
@@ -24,7 +24,7 @@
                                         placeholder="Hizmet Adı"
                                         name="name"
                                         id="name"
-                                        value="{{ old('name') }}"
+                                        value="{{ old('name', $service->name) }}"
                                     >
 
                                     <label for="title" class="form-label m-t-sm">Hizmet Açıklaması</label>
@@ -33,12 +33,12 @@
                                         name="description"
                                         id="description"
                                         cols="30"
-                                        rows="10"></textarea>
+                                        rows="10">{{ $service->description }}</textarea>
 
 
                                     <div class="col-6 mx-auto mt-2">
                                         <button type="submit" class="btn btn-success btn-rounded btn-style-light w-100">
-                                            Ekle
+                                            Güncelle
                                         </button>
                                     </div>
                                 </div>
@@ -127,7 +127,8 @@
                 {
                     $.ajax({
                         type: 'POST',
-                        url: '{{ route("admin.service.store") }}',
+                        method: 'PUT',
+                        url: '{{ route("admin.service.update", $service->id) }}',
                         data: $('#submitForm').serialize(),
                         success: function (response) {
                             /** Controller tarafından dönen response a göre alert tetiklenir */
@@ -138,7 +139,7 @@
                                     messageSize : '20px',
                                     titleSize: '20px',
                                     title: 'Başarılı',
-                                    message: 'Kayıt İşlemi Başarılı',
+                                    message: 'Güncelleme İşlemi Başarılı',
                                     position: 'topCenter',
                                 });
 
@@ -168,7 +169,6 @@
         /** Inputları boşaltan fonksiyon */
         function clearInputs() {
             $("input:not([type='radio'])").val("");
-            $("#description").val("");
         }
     </script>
 @endsection
