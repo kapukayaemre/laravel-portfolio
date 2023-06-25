@@ -84,6 +84,12 @@ class AboutController extends Controller
         }
     }
 
+    public function resumeDownload()
+    {
+        $about = About::query()->first();
+        return response()->download(public_path($about->resume));
+    }
+
     /**
      * Remove the specified resource from storage.
      */
