@@ -56,6 +56,7 @@ class HeroController extends Controller
      */
     public function update(HeroUpdateRequest $request, $id)
     {
+        dd($request->all());
         $hero = Hero::first();
 
         if($request->hasFile('image')){

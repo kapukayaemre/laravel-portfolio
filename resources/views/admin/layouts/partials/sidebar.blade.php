@@ -40,15 +40,7 @@
 
             {{--? About Section --}}
             <li>
-                <a href="#"><i class="material-icons-two-tone">person</i>About Section<i class="material-icons has-sub-menu">keyboard_arrow_right</i></a>
-                <ul class="sub-menu">
-                    <li>
-                        <a href="{{ route('profile.edit') }}">Test</a>
-                    </li>
-                    <li>
-                        <a href="header-full-width.html">Test</a>
-                    </li>
-                </ul>
+                <a href="{{ route('admin.about.index') }}"><i class="material-icons-two-tone">person</i>Hakkımda Bölümü</a>
             </li>
 
             {{--? Portfolio Section --}}
