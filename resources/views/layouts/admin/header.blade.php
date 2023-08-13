@@ -189,9 +189,16 @@
                             </div>
                             <!--end::Menu item-->
                             <!--begin::Menu item-->
-                            <div class="menu-item px-5">
-                                <a href="../../demo1/dist/authentication/flows/basic/sign-in.html" class="menu-link px-5">Sign Out</a>
-                            </div>
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+                                <div class="menu-item px-5">
+                                    <a href="javascript:void(0)" onclick="event.preventDefault();
+                                        this.closest('form').submit();" class="menu-link px-5">
+                                        Çıkış Yap
+                                    </a>
+                                </div>
+                            </form>
+
                             <!--end::Menu item-->
                             <!--begin::Menu separator-->
                             <div class="separator my-2"></div>
