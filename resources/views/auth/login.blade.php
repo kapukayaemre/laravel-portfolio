@@ -49,6 +49,11 @@ License: For each use you must have a valid license purchased only from above li
             <!--end::Logo-->
             <!--begin::Wrapper-->
             <div class="w-lg-500px bg-body rounded shadow-sm p-10 p-lg-15 mx-auto">
+                @if(session()->has("status"))
+                    <div class="fv-plugins-message-container valid-feedback text-center mb-4 fw-bold">
+                        {{ session()->get("status") }}
+                    </div>
+                @endif
                 <!--begin::Form-->
                 <form action="{{ route("login") }}" method="POST" class="form w-100">
                     @csrf
