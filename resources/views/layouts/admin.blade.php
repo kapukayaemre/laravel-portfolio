@@ -24,6 +24,7 @@
     <link href="{{ asset("assets/assets/plugins/global/plugins.bundle.css") }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset("assets/assets/css/style.bundle.css") }}" rel="stylesheet" type="text/css" />
     <!--end::Global Stylesheets Bundle-->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
     @yield("css")
 </head>
 <!--end::Head-->
@@ -80,7 +81,22 @@
 <script src="{{ asset("assets/assets/js/custom/modals/create-app.js") }}"></script>
 <script src="{{ asset("assets/assets/js/custom/modals/upgrade-plan.js") }}"></script>
 <!--end::Page Custom Javascript-->
+<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 <!--end::Javascript-->
+
+<!--* Dynamic Validation Errors -->
+<script>
+    toastr.options = {
+        "positionClass": "toast-top-center",
+        "progressBar": true,
+    }
+    @if(!empty($errors->all()))
+        @foreach($errors->all() as $error)
+            toastr.error("{{ $error }}")
+        @endforeach
+    @endif
+</script>
+
 @yield("js")
 </body>
 <!--end::Body-->

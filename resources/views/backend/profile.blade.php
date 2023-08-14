@@ -275,7 +275,6 @@
                                 </div>
                                 <!--end::Col-->
                             </div>
-
                             <!--end::Input group-->
 
                             <!--begin::Input group first_name & last_name -->

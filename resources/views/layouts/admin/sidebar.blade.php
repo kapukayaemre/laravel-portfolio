@@ -45,7 +45,7 @@
                     </a>
                 </div>
 
-                <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                <div data-kt-menu-trigger="click" class="menu-item menu-accordion {{ Route::is("admin.hero.*") ? "hover show" : "" }}">
                     <span class="menu-link">
                         <span class="menu-icon">
                             <!--begin::Svg Icon | path: icons/duotune/ecommerce/ecm007.svg-->
@@ -58,11 +58,18 @@
                             </span>
                             <!--end::Svg Icon-->
                         </span>
-                        <span class="menu-title">Pages</span>
+                        <span class="menu-title">Hero Bölümü</span>
                         <span class="menu-arrow"></span>
                     </span>
-                    <div class="menu-sub menu-sub-accordion menu-active-bg">
-                        {{--! Menüler Gelecek--}}
+                    <div class="menu-sub menu-sub-accordion menu-active-bg {{ Route::is("admin.hero.index") ? "show" : "" }}">
+                        <div class="menu-item">
+                            <a class="menu-link active" href="{{ route("admin.hero.index") }}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Hero</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
