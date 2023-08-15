@@ -264,12 +264,14 @@
                         type: 'DELETE',
                         url: deleteURL,
                         success: function (data){
-                            Swal.fire(
-                                'Başarılı!',
-                                'Silme İşlemi Başarıyla Tamamlandı',
-                                'success'
-                            )
-                            window.location.reload();
+                            Swal.fire({
+                                title: 'Başarılı!',
+                                text: 'Silme İşlemi Başarıyla Tamamlandı',
+                                icon: 'success',
+                                timer: 5000 // Uyarıyı 2 saniye boyunca göster
+                            }).then(() => {
+                                window.location.reload();
+                            });
                         },
                         error: function (xhr, status, error){
                             console.log(error)
@@ -277,9 +279,8 @@
                     })
                 }
             });
-
-        })
-    })
+        });
+    });
 </script>
 
 @yield("js")
