@@ -4,11 +4,6 @@
 @endsection
 
 @section("css")
-    <style>
-        .subTitleTextArea {
-            height: 100px !important;
-        }
-    </style>
 @endsection
 
 @section("content")
@@ -40,11 +35,12 @@
                         <!--begin::Col-->
                         <div class="col-lg-10">
                             <!--begin::Image input-->
-                            <div class="image-input image-input-outline" data-kt-image-input="true"
+                            <div class="image-input image-input-outline"
+                                 data-kt-image-input="true"
                                  style="background-image: url({{ asset("assets/assets/media/avatars/blank.png") }})">
                                 <!--begin::Preview existing avatar-->
-                                <div class="image-input-wrapper w-125px h-125px"
-                                     style="background-image: url({{ asset($hero->image) }})">
+                                <div class="image-input-wrapper w-400px h-200px"
+                                     style="background-image: url({{ asset($hero->image) }});   background-size: contain; background-position: center; width: 100%; height: 300px">
                                 </div>
                                 <!--end::Preview existing avatar-->
                                 <!--begin::Label-->
@@ -152,13 +148,12 @@
                         <!--end::Col-->
                     </div>
                     <!--end::Input group-->
-
                 </div>
                 <!--end::Card body-->
                 <!--begin::Actions-->
                 <div class="card-footer d-flex justify-content-end py-6 px-9">
-                    <button type="reset" class="btn btn-light btn-active-light-primary me-2">Discard</button>
-                    <button type="submit" class="btn btn-primary" id="kt_account_profile_details_submit">Save Changes
+                    <button type="reset" class="btn btn-light btn-active-light-primary me-2">Sıfırla</button>
+                    <button type="submit" class="btn btn-primary" id="kt_account_profile_details_submit">Kaydet
                     </button>
                 </div>
                 <!--end::Actions-->
@@ -177,10 +172,10 @@
         ClassicEditor
             .create(document.querySelector('#sub_title'))
             .then(editor => {
-                console.log(editor);
+                // console.log(editor);
             })
             .catch(error => {
-                console.error(error);
+                // console.error(error);
             });
     </script>
 

@@ -28,7 +28,7 @@
             <div class="menu menu-column menu-title-gray-800 menu-state-title-primary menu-state-icon-primary menu-state-bullet-primary menu-arrow-gray-500" id="#kt_aside_menu" data-kt-menu="true">
 
                 <div class="menu-item">
-                    <a class="menu-link active" href="{{ route("dashboard") }}">
+                    <a class="menu-link {{ Route::is("dashboard") ? "active" : "" }}" href="{{ route("dashboard") }}">
                         <span class="menu-icon">
                             <!--begin::Svg Icon | path: icons/duotune/general/gen025.svg-->
                             <span class="svg-icon svg-icon-2">
@@ -45,7 +45,7 @@
                     </a>
                 </div>
 
-                <div data-kt-menu-trigger="click" class="menu-item menu-accordion {{ Route::is("admin.hero.*") ? "hover show" : "" }}">
+                <div data-kt-menu-trigger="click" class="menu-item menu-accordion {{ Route::is("admin.hero.*") || Route::is("admin.typer-title.*") ? "hover show" : "" }}">
                     <span class="menu-link">
                         <span class="menu-icon">
                             <!--begin::Svg Icon | path: icons/duotune/ecommerce/ecm007.svg-->
@@ -61,13 +61,23 @@
                         <span class="menu-title">Hero Bölümü</span>
                         <span class="menu-arrow"></span>
                     </span>
-                    <div class="menu-sub menu-sub-accordion menu-active-bg {{ Route::is("admin.hero.index") ? "show" : "" }}">
+                    <div class="menu-sub menu-sub-accordion {{ Route::is("admin.hero.index") ? "menu-active-bg show" : "" }}">
                         <div class="menu-item">
-                            <a class="menu-link active" href="{{ route("admin.hero.index") }}">
+                            <a class="menu-link {{ Route::is("admin.hero.index") ? "active" : "" }}" href="{{ route("admin.hero.index") }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
                                 <span class="menu-title">Hero</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="menu-sub menu-sub-accordion {{ Route::is("admin.typer-title.index") ? "menu-active-bg show" : "" }}">
+                        <div class="menu-item">
+                            <a class="menu-link {{ Route::is("admin.typer-title.index") ? "active" : "" }}" href="{{ route("admin.typer-title.index") }}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Hareketli Başlık</span>
                             </a>
                         </div>
                     </div>

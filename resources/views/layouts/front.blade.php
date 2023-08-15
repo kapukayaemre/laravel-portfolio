@@ -38,6 +38,7 @@
 <script src="{{ asset("frontend/assets/js/vendor/modernizr.js") }}"></script>
 <script src="{{ asset("frontend/assets/js/main.js") }}"></script>
 @yield("js")
+@stack("scripts")
 </body>
 
 </html>
