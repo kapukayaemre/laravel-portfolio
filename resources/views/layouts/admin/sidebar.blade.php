@@ -123,7 +123,7 @@
                 </div>
 
                 <!--! PORTFOLIO LINKS -->
-                <div data-kt-menu-trigger="click" class="menu-item menu-accordion {{ Route::is("admin.hero.*") || Route::is("admin.typer-title.*") ? "hover show" : "" }}">
+                <div data-kt-menu-trigger="click" class="menu-item menu-accordion {{ Route::is("admin.category.*") || Route::is("admin.portfolio-item.*") ? "hover show" : "" }}">
                     <span class="menu-link">
                         <span class="menu-icon">
                             <!--begin::Svg Icon | path: icons/duotune/ecommerce/ecm007.svg-->

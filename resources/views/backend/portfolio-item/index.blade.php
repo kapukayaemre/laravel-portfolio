@@ -27,8 +27,11 @@
                 <thead>
                 <tr class="fw-bolder fs-6 text-gray-800 px-7">
                     <th>#</th>
-                    <th>Kategori Adı</th>
-                    <th>Kategori Slug</th>
+                    <th>Başlık</th>
+                    <th>Açıklama</th>
+                    <th>Kategori</th>
+                    <th>Müşteri</th>
+                    <th>Web Sitesi</th>
                     <th>Oluşturulma Tarihi</th>
                     <th>Güncelleme Tarihi</th>
                     <th></th>
@@ -38,13 +41,16 @@
                 @foreach($portfolioItems as $portfolioItem)
                     <tr>
                         <td>{{ $loop->iteration }}</td>
-                        <td>{{ isset($portfolioItem) ? $portfolioItem->name : "" }}</td>
-                        <td>{{ isset($portfolioItem) ? $portfolioItem->slug : "" }}</td>
+                        <td>{{ isset($portfolioItem) ? $portfolioItem->title : "" }}</td>
+                        <td>{!! isset($portfolioItem) ? $portfolioItem->description : "" !!}</td>
+                        <td>{{ isset($portfolioItem) ? $portfolioItem->category_id : "" }}</td>
+                        <td>{{ isset($portfolioItem) ? $portfolioItem->client : "" }}</td>
+                        <td>{{ isset($portfolioItem) ? $portfolioItem->website : "" }}</td>
                         <td>{{ isset($portfolioItem) ? \Carbon\Carbon::parse($portfolioItem->created_at)->format("d-m-Y H:i") : "" }}</td>
                         <td>{{ isset($portfolioItem) ? \Carbon\Carbon::parse($portfolioItem->updated_at)->format("d-m-Y H:i") : "" }}</td>
                         <td class="d-flex justify-content-end">
-                            <a href="{{ route("admin.category.edit" , $portfolioItem->id)  }}" class="btn btn-warning btn-sm mx-1"><i class="fa fa-edit"></i> <strong>Güncelle</strong></a>
-                            <a href="{{ route("admin.category.destroy", $portfolioItem->id) }}" class="btn btn-danger btn-sm btnDelete"><i class="fa fa-trash"></i> <strong>Sil</strong></a>
+                            <a href="{{ route("admin.portfolio-item.edit" , $portfolioItem->id)  }}" class="btn btn-warning btn-sm mx-1"><i class="fa fa-edit"></i> <strong>Güncelle</strong></a>
+                            <a href="{{ route("admin.portfolio-item.destroy", $portfolioItem->id) }}" class="btn btn-danger btn-sm btnDelete"><i class="fa fa-trash"></i> <strong>Sil</strong></a>
                         </td>
                     </tr>
                 @endforeach

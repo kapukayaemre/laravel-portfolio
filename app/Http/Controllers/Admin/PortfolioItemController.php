@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\PortfolioItemStoreRequest;
+use App\Models\Category;
 use App\Models\PortfolioItem;
 use Illuminate\Http\Request;
 
@@ -22,15 +24,29 @@ class PortfolioItemController extends Controller
      */
     public function create()
     {
-        return view("backend.portfolio-item.create");
+        $categories = Category::all();
+        return view("backend.portfolio-item.create", compact("categories"));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(PortfolioItemStoreRequest $request)
     {
-        //
+        $create = PortfolioItem::create([
+            "image"       => handleUpload("image", "", "portfolio-item"),
+            "title"       => $request->input("title"),
+            "description" => $request->input("description"),
+            "category_id" => $request->input("category_id"),
+            "client"      => $request->input("client"),
+            "website"     => $request->input("website")
+        ]);
+
+        $create ?
+            toastr()->success("Portfolio Parçası Başarıyla Oluşturuldu", "Başarılı") :
+            toastr()->error("İşlem Başarısız Sonuçlandı", "Başarısız");
+
+        return redirect()->route("admin.portfolio-item.index");
     }
 
     /**

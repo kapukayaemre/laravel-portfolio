@@ -22,14 +22,14 @@
         <!--begin::Content-->
         <div id="kt_account_profile_details" class="collapse show">
             <!--begin::Form-->
-            <form action="{{ route("admin.portfolio-item.create") }}" method="POST" class="form fv-plugins-bootstrap5 fv-plugins-framework" enctype="multipart/form-data">
+            <form action="{{ route("admin.portfolio-item.store") }}" method="POST" class="form fv-plugins-bootstrap5 fv-plugins-framework" enctype="multipart/form-data">
                 @csrf
                 <!--begin::Card body-->
                 <div class="card-body border-top p-9">
                     <!--begin::Input group-->
                     <div class="row mb-6">
                         <!--begin::Label-->
-                        <label class="col-lg-2 col-form-label fw-bold fs-6">Hakkımda Fotoğraf</label>
+                        <label class="col-lg-2 col-form-label fw-bold fs-6">Portfolio Parçası Resim</label>
                         <!--end::Label-->
                         <!--begin::Col-->
                         <div class="col-lg-10">
@@ -90,7 +90,7 @@
                                    name="title"
                                    class="form-control form-control-lg form-control-solid"
                                    placeholder="Ana Başlık"
-                                   value=""
+                                   value="{{ old("title") }}"
                             >
                             <div class="fv-plugins-message-container invalid-feedback"></div>
                         </div>
@@ -101,15 +101,17 @@
                     <div class="row mb-6">
                         <!--begin::Label-->
                         <label class="col-lg-2 col-form-label fw-bold fs-6">
-                            <span class="required">Country</span>
-                            <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip" title="" data-bs-original-title="Country of origination" aria-label="Country of origination"></i>
+                            <span class="required">Kategori</span>
+                            <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip" title="" data-bs-original-title="Kategori" aria-label="Uygun Kategoriyi Seçiniz"></i>
                         </label>
                         <!--end::Label-->
                         <!--begin::Col-->
                         <div class="col-lg-10 fv-row fv-plugins-icon-container">
-                            <select name="category" aria-label="Select a Country" data-control="select2" data-placeholder="Select a country..." class="form-select form-select-solid form-select-lg fw-bold select2-hidden-accessible" data-select2-id="select2-data-10-qusw" tabindex="-1" aria-hidden="true">
+                            <select name="category_id" aria-label="Select a Country" data-control="select2" data-placeholder="Select a country..." class="form-select form-select-solid form-select-lg fw-bold select2-hidden-accessible" data-select2-id="select2-data-10-qusw" tabindex="-1" aria-hidden="true">
                                 <option value="" data-select2-id="select2-data-12-873f">Bir Kategori Seç...</option>
-                                <option value="AF">Afghanistan</option>
+                                @foreach($categories as $category)
+                                    <option value="{{ $category->id }}" {{ old("category_id") == $category->id ? "selected" : "" }}>{{ $category->name }}</option>
+                                @endforeach
                             </select>
                             <div class="fv-plugins-message-container invalid-feedback"></div>
                         </div>
@@ -123,7 +125,7 @@
                         <!--end::Label-->
                         <!--begin::Col-->
                         <div class="col-lg-10 fv-row fv-plugins-icon-container">
-                            <textarea name="description" id="description"></textarea>
+                            <textarea name="description" id="description">{{ old("description") }}</textarea>
                             <div class="fv-plugins-message-container invalid-feedback"></div>
                         </div>
                         <!--end::Col-->
@@ -141,7 +143,7 @@
                                    name="client"
                                    class="form-control form-control-lg form-control-solid"
                                    placeholder="Müşteri"
-                                   value=""
+                                   value="{{ old("client") }}"
                             >
                             <div class="fv-plugins-message-container invalid-feedback"></div>
                         </div>
@@ -160,7 +162,7 @@
                                    name="website"
                                    class="form-control form-control-lg form-control-solid"
                                    placeholder="Web Sitesi"
-                                   value=""
+                                   value="{{ old("website") }}"
                             >
                             <div class="fv-plugins-message-container invalid-feedback"></div>
                         </div>
