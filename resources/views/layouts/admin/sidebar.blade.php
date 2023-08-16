@@ -140,7 +140,7 @@
                         <span class="menu-title">Portfolio Bölümü</span>
                         <span class="menu-arrow"></span>
                     </span>
-                    <div class="menu-sub menu-sub-accordion {{ Route::is("admin.category.*") ? "menu-active-bg show" : "" }}">
+                    <div class="menu-sub menu-sub-accordion {{ Route::is("admin.category.*") || Route::is("admin.portfolio-item.*") ? "menu-active-bg show" : "" }}">
                         <div class="menu-item">
                             <a class="menu-link {{ Route::is("admin.category.*") ? "active" : "" }}" href="{{ route("admin.category.index") }}">
                                 <span class="menu-bullet">
@@ -150,13 +150,13 @@
                             </a>
                         </div>
                     </div>
-                    <div class="menu-sub menu-sub-accordion {{ Route::is("admin.typer-title.*") ? "menu-active-bg show" : "" }}">
+                    <div class="menu-sub menu-sub-accordion {{ Route::is("admin.portfolio-item.*") ? "menu-active-bg show" : "" }}">
                         <div class="menu-item">
-                            <a class="menu-link {{ Route::is("admin.typer-title.*") ? "active" : "" }}" href="{{ route("admin.typer-title.index") }}">
+                            <a class="menu-link {{ Route::is("admin.portfolio-item.*") ? "active" : "" }}" href="{{ route("admin.portfolio-item.index") }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
-                                <span class="menu-title">Hareketli Başlık</span>
+                                <span class="menu-title">Portfolio Parçası</span>
                             </a>
                         </div>
                     </div>
