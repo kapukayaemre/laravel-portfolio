@@ -56,24 +56,36 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
-        //
+        $category = Category::findOrFail($id);
+        return view("backend.portfolio-category.edit", compact("category"));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(PortfolioCategoryRequest $request, $id)
     {
-        //
+        $categoryName = $request->input("name");
+        $category = Category::where("id", $id)->update([
+            "name" => $categoryName,
+            "slug" => Str::slug($categoryName)
+        ]);
+
+        $category ?
+            toastr()->success("Kategori Başarıyla Güncellendi", "Başarılı") :
+            toastr()->error("İşlem Başarısız Sonuçlandı", "Başarısız");
+
+        return redirect()->route("admin.category.index");
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        $categoryName = Category::findOrFail($id);
+        $categoryName->delete();
     }
 }
