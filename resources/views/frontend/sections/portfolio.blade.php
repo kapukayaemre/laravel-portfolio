@@ -33,10 +33,10 @@
                                     <i class="fas fa-plus"></i>
                                 </a>
                                 <h4 class="title">
-                                    <a href="{{ $portfolioItem->website }}">{{ $portfolioItem->title }}</a>
+                                    <a href="{{ route("home.show-portfolio", $portfolioItem->id) }}">{{ $portfolioItem->title }}</a>
                                 </h4>
                                 <div class="desc">
-                                    <p>{!! Str::limit($portfolioItem->description, 100) !!}</p>
+                                    <p>{!! Str::limit(strip_tags($portfolioItem->description), 100) !!}</p>
                                 </div>
                             </div>
                         </div>
