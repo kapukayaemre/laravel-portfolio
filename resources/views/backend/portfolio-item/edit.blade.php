@@ -1,6 +1,6 @@
 @extends("layouts.admin")
 @section("title")
-    Hero
+    Portfolio Parçası Bölümü
 @endsection
 
 @section("css")
@@ -14,7 +14,7 @@
              aria-controls="kt_account_profile_details">
             <!--begin::Card title-->
             <div class="card-title m-0">
-                <h3 class="fw-bolder m-0">Hero Bölümü</h3>
+                <h3 class="fw-bolder m-0">Portfolio Parçası Düzenle</h3>
             </div>
             <!--end::Card title-->
         </div>
@@ -22,7 +22,7 @@
         <!--begin::Content-->
         <div id="kt_account_profile_details" class="collapse show">
             <!--begin::Form-->
-            <form action="{{ route("admin.hero.update", 1) }}" method="POST" class="form fv-plugins-bootstrap5 fv-plugins-framework" enctype="multipart/form-data">
+            <form action="{{ route("admin.portfolio-item.update", $portfolioItem->id) }}" method="POST" class="form fv-plugins-bootstrap5 fv-plugins-framework" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <!--begin::Card body-->
@@ -30,7 +30,7 @@
                     <!--begin::Input group-->
                     <div class="row mb-6">
                         <!--begin::Label-->
-                        <label class="col-lg-2 col-form-label fw-bold fs-6">Hero Fotoğraf</label>
+                        <label class="col-lg-2 col-form-label fw-bold fs-6">Portfolio Parçası Resim</label>
                         <!--end::Label-->
                         <!--begin::Col-->
                         <div class="col-lg-10">
@@ -40,7 +40,7 @@
                                  style="background-image: url({{ asset("assets/assets/media/avatars/blank.png") }})">
                                 <!--begin::Preview existing avatar-->
                                 <div class="image-input-wrapper w-400px h-200px"
-                                     style="background-image: url({{ isset($hero) ? asset($hero->image) : asset("assets/assets/media/avatars/150-5.jpg") }});   background-size: contain; background-position: center; width: 100%; height: 300px">
+                                     style="background-image: url({{ isset($portfolioItem) ? asset($portfolioItem->image) : asset("assets/assets/media/avatars/blank.png") }});   background-size: contain; background-position: center; width: 100%; height: 300px">
                                 </div>
                                 <!--end::Preview existing avatar-->
                                 <!--begin::Label-->
@@ -50,7 +50,7 @@
                                     data-bs-original-title="Change avatar">
                                     <i class="bi bi-pencil-fill fs-7"></i>
                                     <!--begin::Inputs-->
-                                    <input type="file" name="image" accept=".png, .jpg, .jpeg">
+                                    <input type="file" name="image" value="{{ old("image") }}" accept=".png, .jpg, .jpeg">
                                     <!--end::Inputs-->
                                 </label>
                                 <!--end::Label-->
@@ -83,7 +83,7 @@
                     <!--begin::Input group-->
                     <div class="row mb-6">
                         <!--begin::Label-->
-                        <label class="col-lg-2 col-form-label required fw-bold fs-6">Ana Başlık</label>
+                        <label class="col-lg-2 col-form-label required fw-bold fs-6">Başlık</label>
                         <!--end::Label-->
                         <!--begin::Col-->
                         <div class="col-lg-10 fv-row fv-plugins-icon-container">
@@ -91,7 +91,64 @@
                                    name="title"
                                    class="form-control form-control-lg form-control-solid"
                                    placeholder="Ana Başlık"
-                                   value="{{ isset($hero) ? $hero->title : "" }}"
+                                   value="{{ old("title", isset($portfolioItem) ? $portfolioItem->title : "") }}"
+                            >
+                            <div class="fv-plugins-message-container invalid-feedback"></div>
+                        </div>
+                        <!--end::Col-->
+                    </div>
+                    <!--end::Input group-->
+
+                    <div class="row mb-6">
+                        <!--begin::Label-->
+                        <label class="col-lg-2 col-form-label fw-bold fs-6">
+                            <span class="required">Kategori</span>
+                            <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip" title="" data-bs-original-title="Kategori" aria-label="Uygun Kategoriyi Seçiniz"></i>
+                        </label>
+                        <!--end::Label-->
+                        <!--begin::Col-->
+                        <div class="col-lg-10 fv-row fv-plugins-icon-container">
+                            <select name="category_id" aria-label="Select a Country" data-control="select2" data-placeholder="Select a country..." class="form-select form-select-solid form-select-lg fw-bold select2-hidden-accessible" data-select2-id="select2-data-10-qusw" tabindex="-1" aria-hidden="true">
+                                <option value="" data-select2-id="select2-data-12-873f">Bir Kategori Seç...</option>
+                                @foreach($categories as $category)
+                                    <option value="{{ $category->id }}"
+                                        {{ old("category_id") == $category->id ? "selected" : "" }}
+                                        {{ $portfolioItem->category_id === $category->id ? "selected" : "" }} >
+                                        {{ $category->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            <div class="fv-plugins-message-container invalid-feedback"></div>
+                        </div>
+                        <!--end::Col-->
+                    </div>
+
+                    <!--begin::Input group-->
+                    <div class="row mb-6">
+                        <!--begin::Label-->
+                        <label class="col-lg-2 col-form-label required fw-bold fs-6">Açıklama</label>
+                        <!--end::Label-->
+                        <!--begin::Col-->
+                        <div class="col-lg-10 fv-row fv-plugins-icon-container">
+                            <textarea name="description" id="description">{!! old("description", isset($portfolioItem) ? $portfolioItem->description : "") !!}</textarea>
+                            <div class="fv-plugins-message-container invalid-feedback"></div>
+                        </div>
+                        <!--end::Col-->
+                    </div>
+                    <!--end::Input group-->
+
+                    <!--begin::Input group-->
+                    <div class="row mb-6">
+                        <!--begin::Label-->
+                        <label class="col-lg-2 col-form-label required fw-bold fs-6">Müşteri</label>
+                        <!--end::Label-->
+                        <!--begin::Col-->
+                        <div class="col-lg-10 fv-row fv-plugins-icon-container">
+                            <input type="text"
+                                   name="client"
+                                   class="form-control form-control-lg form-control-solid"
+                                   placeholder="Müşteri"
+                                   value="{{ old("client", isset($portfolioItem) ? $portfolioItem->client : "") }}"
                             >
                             <div class="fv-plugins-message-container invalid-feedback"></div>
                         </div>
@@ -102,46 +159,15 @@
                     <!--begin::Input group-->
                     <div class="row mb-6">
                         <!--begin::Label-->
-                        <label class="col-lg-2 col-form-label required fw-bold fs-6">Alt Başlık</label>
-                        <!--end::Label-->
-                        <!--begin::Col-->
-                        <div class="col-lg-10 fv-row fv-plugins-icon-container">
-                            <textarea name="sub_title" id="sub_title">{{ isset($hero) ? $hero->sub_title : "" }}</textarea>
-                            <div class="fv-plugins-message-container invalid-feedback"></div>
-                        </div>
-                        <!--end::Col-->
-                    </div>
-                    <!--end::Input group-->
-
-                    <div class="row mb-6">
-                        <!--begin::Label-->
-                        <label class="col-lg-2 col-form-label required fw-bold fs-6">Buton Adı</label>
+                        <label class="col-lg-2 col-form-label required fw-bold fs-6">Web Sitesi</label>
                         <!--end::Label-->
                         <!--begin::Col-->
                         <div class="col-lg-10 fv-row fv-plugins-icon-container">
                             <input type="text"
-                                   name="button_text"
+                                   name="website"
                                    class="form-control form-control-lg form-control-solid"
-                                   placeholder="Buton Adı"
-                                   value="{{ isset($hero) ? $hero->button_text : "" }}"
-                            >
-                            <div class="fv-plugins-message-container invalid-feedback"></div>
-                        </div>
-                        <!--end::Col-->
-                    </div>
-                    <!--end::Input group-->
-
-                    <div class="row mb-6">
-                        <!--begin::Label-->
-                        <label class="col-lg-2 col-form-label required fw-bold fs-6">Buton URL</label>
-                        <!--end::Label-->
-                        <!--begin::Col-->
-                        <div class="col-lg-10 fv-row fv-plugins-icon-container">
-                            <input type="text"
-                                   name="button_url"
-                                   class="form-control form-control-lg form-control-solid"
-                                   placeholder="Buton URL"
-                                   value="{{ isset($hero) ? $hero->button_url : "" }}"
+                                   placeholder="Web Sitesi"
+                                   value="{{ old("website", isset($portfolioItem) ? $portfolioItem->website : "") }}"
                             >
                             <div class="fv-plugins-message-container invalid-feedback"></div>
                         </div>
@@ -170,7 +196,7 @@
     <script src="{{ asset("assets/assets/plugins/custom/ckeditor/ckeditor-classic.bundle.js") }}"></script>
     <script>
         ClassicEditor
-            .create(document.querySelector('#sub_title'))
+            .create(document.querySelector('#description'))
             .then(editor => {
                 // console.log(editor);
             })

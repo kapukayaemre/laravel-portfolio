@@ -28,6 +28,7 @@
                 <tr class="fw-bolder fs-6 text-gray-800 px-7">
                     <th>#</th>
                     <th>Başlık</th>
+                    <th>Resim</th>
                     <th>Açıklama</th>
                     <th>Kategori</th>
                     <th>Müşteri</th>
@@ -41,9 +42,10 @@
                 @foreach($portfolioItems as $portfolioItem)
                     <tr>
                         <td>{{ $loop->iteration }}</td>
+                        <td>{!! isset($portfolioItem) ? '<img src="' . asset($portfolioItem->image) . '" alt="" height="50">' : "" !!}</td>
                         <td>{{ isset($portfolioItem) ? $portfolioItem->title : "" }}</td>
                         <td>{!! isset($portfolioItem) ? $portfolioItem->description : "" !!}</td>
-                        <td>{{ isset($portfolioItem) ? $portfolioItem->category_id : "" }}</td>
+                        <td>{{ isset($portfolioItem) ? $portfolioItem->category->name : "" }}</td>
                         <td>{{ isset($portfolioItem) ? $portfolioItem->client : "" }}</td>
                         <td>{{ isset($portfolioItem) ? $portfolioItem->website : "" }}</td>
                         <td>{{ isset($portfolioItem) ? \Carbon\Carbon::parse($portfolioItem->created_at)->format("d-m-Y H:i") : "" }}</td>
