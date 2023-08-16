@@ -156,7 +156,7 @@
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
-                                <span class="menu-title">Portfolio Parçası</span>
+                                <span class="menu-title">Portfolio İçerikleri</span>
                             </a>
                         </div>
                     </div>

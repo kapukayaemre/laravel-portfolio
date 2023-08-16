@@ -1,6 +1,6 @@
 @extends("layouts.admin")
 @section("title")
-    Portfolio Parçaları
+    Portfolio İçerikleri
 @endsection
 
 @section("css")
@@ -13,7 +13,7 @@
         <div class="card-header border-0 cursor-pointer">
             <!--begin::Card title-->
             <div class="card-title m-0">
-                <h3 class="fw-bolder m-0">Tüm Portfolio Parçaları</h3>
+                <h3 class="fw-bolder m-0">Tüm Portfolio İçerikleri</h3>
             </div>
             <div class="d-flex justify-content-end py-6 px-2">
                 <a href="{{ route("admin.portfolio-item.create") }}" class="btn btn-sm btn-primary">Yeni Ekle</a>
