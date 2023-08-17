@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\About;
 use App\Models\Category;
 use App\Models\Experience;
+use App\Models\FeedBack;
+use App\Models\FeedBackSetting;
 use App\Models\Hero;
 use App\Models\PortfolioItem;
 use App\Models\PortfolioSectionSetting;
@@ -29,6 +31,8 @@ class HomeController extends Controller
         $skills = SkillSectionSetting::first();
         $skillItems = SkillItem::all();
         $experiences = Experience::first();
+        $feedBacks = FeedBack::all();
+        $feedBackSettings = FeedBackSetting::first();
         return view("frontend.home", compact(
             "hero",
             "typerTitles",
@@ -39,7 +43,9 @@ class HomeController extends Controller
             "portfolioItems",
             "skills",
             "skillItems",
-            "experiences"
+            "experiences",
+            "feedBacks",
+            "feedBackSettings"
         ));
     }
 
