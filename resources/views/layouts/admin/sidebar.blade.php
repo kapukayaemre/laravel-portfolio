@@ -101,7 +101,7 @@
                             </span>
                             <!--end::Svg Icon-->
                         </span>
-                        <span class="menu-title">Hizmetler</span>
+                        <span class="menu-title">Hizmetler Bölümü</span>
                     </a>
                 </div>
 
@@ -172,7 +172,7 @@
                     </div>
                 </div>
 
-                <!--! SKILLS SECTION -->
+                <!--! SKILLS LINKS -->
                 <div data-kt-menu-trigger="click" class="menu-item menu-accordion {{ Route::is("admin.skills-section-settings.*") || Route::is("admin.skills-items.*")  ? "hover show" : "" }}">
                     <span class="menu-link">
                         <span class="menu-icon">
@@ -212,7 +212,7 @@
                     </div>
                 </div>
 
-                <!--! EXPERIENCES LINK -->
+                <!--! EXPERIENCES LINKS -->
                 <div class="menu-item">
                     <a class="menu-link {{ Route::is("admin.experiences.*") ? "active" : "" }}" href="{{ route("admin.experiences.index") }}">
                         <span class="menu-icon">
@@ -227,6 +227,36 @@
                         </span>
                         <span class="menu-title">Tecrübeler Bölümü</span>
                     </a>
+                </div>
+
+                <!--! FEEDBACK LINKS -->
+                <div data-kt-menu-trigger="click" class="menu-item menu-accordion {{ Route::is("admin.feedback.*") ? "hover show" : "" }}">
+                    <span class="menu-link">
+                        <span class="menu-icon">
+                            <!--begin::Svg Icon | path: icons/duotune/ecommerce/ecm007.svg-->
+                            <span class="svg-icon svg-icon-2">
+                                <span class="svg-icon svg-icon-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                        <path opacity="0.3" d="M20 21H3C2.4 21 2 20.6 2 20V10C2 9.4 2.4 9 3 9H20C20.6 9 21 9.4 21 10V20C21 20.6 20.6 21 20 21Z" fill="black"></path>
+                                        <path d="M20 7H3C2.4 7 2 6.6 2 6V3C2 2.4 2.4 2 3 2H20C20.6 2 21 2.4 21 3V6C21 6.6 20.6 7 20 7Z" fill="black"></path>
+                                    </svg>
+                                </span>
+                            </span>
+                            <!--end::Svg Icon-->
+                        </span>
+                        <span class="menu-title">Geri Bildirim Bölümü</span>
+                        <span class="menu-arrow"></span>
+                    </span>
+                    <div class="menu-sub menu-sub-accordion {{ Route::is("admin.feedback.*") ? "menu-active-bg show" : "" }}">
+                        <div class="menu-item">
+                            <a class="menu-link {{ Route::is("admin.feedback.*") ? "active" : "" }}" href="{{ route("admin.feedback.index") }}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Geri Bildirimler</span>
+                            </a>
+                        </div>
+                    </div>
                 </div>
 
             </div>
