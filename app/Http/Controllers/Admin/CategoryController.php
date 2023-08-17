@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PortfolioCategoryRequest;
 use App\Models\Category;
+use App\Models\PortfolioItem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -86,6 +87,13 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         $categoryName = Category::findOrFail($id);
-        $categoryName->delete();
+        $hasItem = PortfolioItem::where("category_id", $categoryName->id)->count();
+        if ($hasItem == 0)
+        {
+            $categoryName->delete();
+            return true;
+        }
+
+        return response(["status" => "error"]);
     }
 }

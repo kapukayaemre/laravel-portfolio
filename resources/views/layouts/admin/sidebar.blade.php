@@ -123,7 +123,7 @@
                 </div>
 
                 <!--! PORTFOLIO LINKS -->
-                <div data-kt-menu-trigger="click" class="menu-item menu-accordion {{ Route::is("admin.category.*") || Route::is("admin.portfolio-item.*") ? "hover show" : "" }}">
+                <div data-kt-menu-trigger="click" class="menu-item menu-accordion {{ Route::is("admin.category.*") || Route::is("admin.portfolio-item.*") || Route::is("admin.portfolio-section-setting.*") ? "hover show" : "" }}">
                     <span class="menu-link">
                         <span class="menu-icon">
                             <!--begin::Svg Icon | path: icons/duotune/ecommerce/ecm007.svg-->
@@ -140,7 +140,7 @@
                         <span class="menu-title">Portfolio Bölümü</span>
                         <span class="menu-arrow"></span>
                     </span>
-                    <div class="menu-sub menu-sub-accordion {{ Route::is("admin.category.*") || Route::is("admin.portfolio-item.*") || Route::is("admin.portfolio-section-setting.*") ? "menu-active-bg show" : "" }}">
+                    <div class="menu-sub menu-sub-accordion {{ Route::is("admin.category.*") ? "menu-active-bg show" : "" }}">
                         <div class="menu-item">
                             <a class="menu-link {{ Route::is("admin.category.*") ? "active" : "" }}" href="{{ route("admin.category.index") }}">
                                 <span class="menu-bullet">

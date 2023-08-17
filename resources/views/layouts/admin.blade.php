@@ -264,14 +264,26 @@
                         type: 'DELETE',
                         url: deleteURL,
                         success: function (data){
-                            Swal.fire({
-                                title: 'Başarılı!',
-                                text: 'Silme İşlemi Başarıyla Tamamlandı',
-                                icon: 'success',
-                                timer: 5000 // Uyarıyı 2 saniye boyunca göster
-                            }).then(() => {
-                                window.location.reload();
-                            });
+                            if (data.status === "error")
+                            {
+                                Swal.fire({
+                                    title: 'Silme İşlemi Başarısız!',
+                                    text: 'Kategoriye bağlı portfolio içerikleri var. Eğer kategoriyi silmek istiyorsanız önce onları silmelisiniz!',
+                                    icon: 'error',
+                                    timer: 10000
+                                })
+                            }
+                            else
+                            {
+                                Swal.fire({
+                                    title: 'Başarılı!',
+                                    text: 'Silme İşlemi Başarıyla Tamamlandı',
+                                    icon: 'success',
+                                    timer: 5000
+                                }).then(() => {
+                                    window.location.reload();
+                                });
+                            }
                         },
                         error: function (xhr, status, error){
                             console.log(error)
