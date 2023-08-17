@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ExperiencesUpdateRequest;
+use App\Models\Experience;
 use Illuminate\Http\Request;
 
 class ExperiencesController extends Controller
@@ -12,7 +14,8 @@ class ExperiencesController extends Controller
      */
     public function index()
     {
-        return view("backend.experience.index");
+        $experiences = Experience::first();
+        return view("backend.experience.index", compact("experiences"));
     }
 
     /**
@@ -50,9 +53,26 @@ class ExperiencesController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(ExperiencesUpdateRequest $request, $id)
     {
-        //
+        $experiences = Experience::find($id);
+        $imagePath   = handleUpload('image', $experiences, "experiences");
+
+        $update = Experience::updateOrCreate(
+            ['id' => $id],
+            [
+                'image'       => (!empty($imagePath) ? $imagePath : $experiences->image),
+                'title'       => $request->input("title"),
+                'description' => $request->input("description"),
+                'phone'       => $request->input("phone"),
+                'email'       => $request->input("email")
+            ]);
+
+        $update ?
+            toastr()->success("Tecrübeler Bölümü Başarıyla Güncellendi", "Başarılı") :
+            toastr()->error("İşlem Başarısız Sonuçlandı");
+
+        return redirect()->route("admin.experiences.index");
     }
 
     /**

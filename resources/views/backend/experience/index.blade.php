@@ -40,7 +40,7 @@
                                  style="background-image: url({{ asset("assets/assets/media/avatars/blank.png") }})">
                                 <!--begin::Preview existing avatar-->
                                 <div class="image-input-wrapper w-400px h-200px"
-                                     style="background-image: url({{ isset($about) ? asset($about->image): "" }});   background-size: contain; background-position: center; width: 100%; height: 300px">
+                                     style="background-image: url({{ isset($experiences) ? asset($experiences->image): "" }});   background-size: contain; background-position: center; width: 100%; height: 300px">
                                 </div>
                                 <!--end::Preview existing avatar-->
                                 <!--begin::Label-->
@@ -91,7 +91,7 @@
                                    name="title"
                                    class="form-control form-control-lg form-control-solid"
                                    placeholder="Ana Başlık"
-                                   value="{{ old('title', isset($about) ? $about->title : "") }}"
+                                   value="{{ old('title', isset($experiences) ? $experiences->title : "") }}"
                             >
                             <div class="fv-plugins-message-container invalid-feedback"></div>
                         </div>
@@ -106,7 +106,7 @@
                         <!--end::Label-->
                         <!--begin::Col-->
                         <div class="col-lg-10 fv-row fv-plugins-icon-container">
-                            <textarea name="description" id="description">{{ old('description', isset($about) ? $about->description : "") }}</textarea>
+                            <textarea name="description" id="description">{{ old('description', isset($experiences) ? $experiences->description : "") }}</textarea>
                             <div class="fv-plugins-message-container invalid-feedback"></div>
                         </div>
                         <!--end::Col-->
@@ -124,7 +124,7 @@
                                    name="phone"
                                    class="form-control form-control-lg form-control-solid"
                                    placeholder="Telefon"
-                                   value="{{ old('title', isset($about) ? $about->title : "") }}"
+                                   value="{{ old('phone', isset($experiences) ? $experiences->phone : "") }}"
                             >
                             <div class="fv-plugins-message-container invalid-feedback"></div>
                         </div>
@@ -139,18 +139,17 @@
                         <!--end::Label-->
                         <!--begin::Col-->
                         <div class="col-lg-10 fv-row fv-plugins-icon-container">
-                            <input type="text"
+                            <input type="email"
                                    name="email"
                                    class="form-control form-control-lg form-control-solid"
                                    placeholder="Email"
-                                   value="{{ old('title', isset($about) ? $about->title : "") }}"
+                                   value="{{ old('email', isset($experiences) ? $experiences->email : "") }}"
                             >
                             <div class="fv-plugins-message-container invalid-feedback"></div>
                         </div>
                         <!--end::Col-->
                     </div>
                     <!--end::Input group-->
-
                 </div>
                 <!--end::Card body-->
                 <!--begin::Actions-->
