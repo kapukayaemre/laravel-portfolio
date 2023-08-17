@@ -29,7 +29,7 @@
                     <!--begin::Input group-->
                     <div class="row mb-6">
                         <!--begin::Label-->
-                        <label class="col-lg-2 col-form-label fw-bold fs-6">Portfolio Parçası Resim</label>
+                        <label class="col-lg-2 col-form-label fw-bold fs-6">Portfolio İçerik Resim</label>
                         <!--end::Label-->
                         <!--begin::Col-->
                         <div class="col-lg-10">
