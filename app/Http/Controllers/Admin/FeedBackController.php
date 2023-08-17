@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\FeedBackStoreRequest;
 use App\Models\FeedBack;
 use Illuminate\Http\Request;
 
@@ -28,9 +29,19 @@ class FeedBackController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(FeedBackStoreRequest $request)
     {
-        //
+        $create = FeedBack::create([
+            "title"       => $request->input("title"),
+            "position"    => $request->input("position"),
+            "description" => $request->input("description")
+        ]);
+
+        $create ?
+            toastr()->success("Geri Bildirim Başarıyla Oluşturuldu", "Başarılı") :
+            toastr()->error("İşlem Başarısız Sonuçlandı", "Başarısız");
+
+        return redirect()->route("admin.feedback.index");
     }
 
     /**

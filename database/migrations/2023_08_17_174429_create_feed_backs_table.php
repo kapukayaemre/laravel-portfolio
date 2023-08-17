@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('feed_backs', function (Blueprint $table) {
             $table->id();
+            $table->string("title");
+            $table->string("position");
+            $table->text("description");
             $table->timestamps();
         });
     }

@@ -22,9 +22,8 @@
         <!--begin::Content-->
         <div id="kt_account_profile_details" class="collapse show">
             <!--begin::Form-->
-            <form action="{{ route("admin.feedback.store") }}" method="POST" class="form fv-plugins-bootstrap5 fv-plugins-framework" enctype="multipart/form-data">
+            <form action="{{ route("admin.feedback.store") }}" method="POST" class="form fv-plugins-bootstrap5 fv-plugins-framework">
                 @csrf
-                @method('PUT')
                 <!--begin::Card body-->
                 <div class="card-body border-top p-9">
                     <!--begin::Input group-->

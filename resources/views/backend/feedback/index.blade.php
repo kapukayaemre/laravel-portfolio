@@ -35,16 +35,17 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($categories as $category)
+                @foreach($feedBacks as $feedBack)
                     <tr>
                         <td>{{ $loop->iteration }}</td>
-                        <td>{{ isset($category) ? $category->name : "" }}</td>
-                        <td>{{ isset($category) ? $category->slug : "" }}</td>
-                        <td>{{ isset($category) ? \Carbon\Carbon::parse($category->created_at)->format("d-m-Y H:i") : "" }}</td>
-                        <td>{{ isset($category) ? \Carbon\Carbon::parse($category->updated_at)->format("d-m-Y H:i") : "" }}</td>
+                        <td>{{ isset($feedBack) ? $feedBack->title : "" }}</td>
+                        <td>{{ isset($feedBack) ? $feedBack->position : "" }}</td>
+                        <td>{!! isset($feedBack) ? $feedBack->description : "" !!}</td>
+                        <td>{{ isset($feedBack) ? \Carbon\Carbon::parse($feedBack->created_at)->format("d-m-Y H:i") : "" }}</td>
+                        <td>{{ isset($feedBack) ? \Carbon\Carbon::parse($feedBack->updated_at)->format("d-m-Y H:i") : "" }}</td>
                         <td class="d-flex justify-content-end">
-                            <a href="{{ route("admin.category.edit" , $category->id)  }}" class="btn btn-warning btn-sm mx-1"><i class="fa fa-edit"></i> <strong>Güncelle</strong></a>
-                            <a href="{{ route("admin.category.destroy", $category->id) }}" class="btn btn-danger btn-sm btnDelete"><i class="fa fa-trash"></i> <strong>Sil</strong></a>
+                            <a href="{{ route("admin.feedback.edit" , $feedBack->id)  }}" class="btn btn-warning btn-sm mx-1"><i class="fa fa-edit"></i> <strong>Güncelle</strong></a>
+                            <a href="{{ route("admin.feedback.destroy", $feedBack->id) }}" class="btn btn-danger btn-sm btnDelete"><i class="fa fa-trash"></i> <strong>Sil</strong></a>
                         </td>
                     </tr>
                 @endforeach
