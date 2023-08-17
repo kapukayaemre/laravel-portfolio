@@ -8,6 +8,7 @@ class SkillItem extends Model
 {
     protected $fillable = [
         "name",
-        "percent"
+        "percent",
+        "color"
     ];
 }

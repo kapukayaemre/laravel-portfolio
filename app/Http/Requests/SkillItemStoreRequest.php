@@ -23,7 +23,8 @@ class SkillItemStoreRequest extends FormRequest
     {
         return [
             "name"    => ["required", "max:100"],
-            "percent" => ["required", "numeric", "max:100"]
+            "percent" => ["required", "numeric", "max:100"],
+            "color"   => ["required"]
         ];
     }
 
@@ -34,7 +35,8 @@ class SkillItemStoreRequest extends FormRequest
             "name.max"         => "Yetenek Adı En Fazla 100 Karakterden Oluşabilir",
             "percent.required" => "Yetenek Yüzdesi Zorunlu Alandır",
             "percent.numeric"  => "Yetenek Yüzdesi Sayısal Olmalıdır",
-            "percent.max"      => "Yetenek Yüzdesi En Fazla 100'e Kadar Olabilir"
+            "percent.max"      => "Yetenek Yüzdesi En Fazla 100'e Kadar Olabilir",
+            "color.required"   => "Yetenek Bar Rengi Zorunlu Alandır"
         ];
     }
 }

@@ -64,6 +64,25 @@
                     </div>
                     <!--end::Input group-->
 
+                    <!--begin::Input group-->
+                    <div class="row mb-6 offset-1">
+                        <!--begin::Label-->
+                        <label class="col-lg-2 col-form-label required fw-bold fs-6">Yetenek Bar Rengi</label>
+                        <!--end::Label-->
+                        <!--begin::Col-->
+                        <div class="col-lg-1 fv-row fv-plugins-icon-container">
+                            <input type="color"
+                                   name="color"
+                                   class="form-control form-control-lg form-control-solid"
+                                   placeholder="Yetenek Bar Rengi"
+                                   value="{{ old("color") }}"
+                            >
+                            <div class="fv-plugins-message-container invalid-feedback"></div>
+                        </div>
+                        <!--end::Col-->
+                    </div>
+                    <!--end::Input group-->
+
                 </div>
                 <!--end::Card body-->
                 <!--begin::Actions-->

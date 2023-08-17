@@ -29,6 +29,7 @@
                     <th>#</th>
                     <th>Yetenek Adı</th>
                     <th>Yetenek Yüzdesi(%)</th>
+                    <th>Yetenek Bar Rengi</th>
                     <th>Oluşturulma Tarihi</th>
                     <th>Güncelleme Tarihi</th>
                     <th></th>
@@ -40,6 +41,7 @@
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ isset($skill) ? $skill->name : "" }}</td>
                         <td>{{ isset($skill) ? $skill->percent : "" }}</td>
+                        <td>{!! isset($skill) ? "<input disabled type='color' value='$skill->color'>" : "" !!}</td>
                         <td>{{ isset($skill) ? \Carbon\Carbon::parse($skill->created_at)->format("d-m-Y H:i") : "" }}</td>
                         <td>{{ isset($skill) ? \Carbon\Carbon::parse($skill->updated_at)->format("d-m-Y H:i") : "" }}</td>
                         <td class="d-flex justify-content-end">

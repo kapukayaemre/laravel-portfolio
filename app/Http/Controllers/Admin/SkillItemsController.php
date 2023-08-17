@@ -33,7 +33,8 @@ class SkillItemsController extends Controller
     {
         $create = SkillItem::create([
             "name"    => $request->input("name"),
-            "percent" => $request->input("percent")
+            "percent" => $request->input("percent"),
+            "color"   => $request->input("color")
         ]);
 
         $create ?
@@ -67,7 +68,8 @@ class SkillItemsController extends Controller
     {
         $update = SkillItem::where("id", $id)->update([
             "name"    => $request->input("name"),
-            "percent" => $request->input("percent")
+            "percent" => $request->input("percent"),
+            "color"   => $request->input("color")
         ]);
 
         $update ?
