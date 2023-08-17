@@ -230,7 +230,7 @@
                 </div>
 
                 <!--! FEEDBACK LINKS -->
-                <div data-kt-menu-trigger="click" class="menu-item menu-accordion {{ Route::is("admin.feedback.*") ? "hover show" : "" }}">
+                <div data-kt-menu-trigger="click" class="menu-item menu-accordion {{ Route::is("admin.feedback.*") || Route::is("admin.feedback-section-settings.*") ? "hover show" : "" }}">
                     <span class="menu-link">
                         <span class="menu-icon">
                             <!--begin::Svg Icon | path: icons/duotune/ecommerce/ecm007.svg-->
@@ -247,6 +247,7 @@
                         <span class="menu-title">Geri Bildirim Bölümü</span>
                         <span class="menu-arrow"></span>
                     </span>
+
                     <div class="menu-sub menu-sub-accordion {{ Route::is("admin.feedback.*") ? "menu-active-bg show" : "" }}">
                         <div class="menu-item">
                             <a class="menu-link {{ Route::is("admin.feedback.*") ? "active" : "" }}" href="{{ route("admin.feedback.index") }}">
@@ -254,6 +255,17 @@
                                     <span class="bullet bullet-dot"></span>
                                 </span>
                                 <span class="menu-title">Geri Bildirimler</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="menu-sub menu-sub-accordion {{ Route::is("admin.feedback-section-settings.*") ? "menu-active-bg show" : "" }}">
+                        <div class="menu-item">
+                            <a class="menu-link {{ Route::is("admin.feedback-section-settings.*") ? "active" : "" }}" href="{{ route("admin.feedback-section-settings.index") }}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Geri Bildirim Ayarları</span>
                             </a>
                         </div>
                     </div>
