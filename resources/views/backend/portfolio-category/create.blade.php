@@ -63,17 +63,3 @@
     </div>
 @endsection
 
-@section("js")
-    <script src="{{ asset("assets/assets/plugins/custom/ckeditor/ckeditor-classic.bundle.js") }}"></script>
-    <script>
-        ClassicEditor
-            .create(document.querySelector('#sub_title'))
-            .then(editor => {
-                console.log(editor);
-            })
-            .catch(error => {
-                console.error(error);
-            });
-    </script>
-
-@endsection

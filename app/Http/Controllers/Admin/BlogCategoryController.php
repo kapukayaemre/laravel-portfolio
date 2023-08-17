@@ -61,24 +61,41 @@ class BlogCategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
-        //
+        $blogCategory = BlogCategory::findOrFail($id);
+        return view("backend.blog-category.edit", compact("blogCategory"));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate(
+            ["name" => ["required", "max:200"]],
+            [
+                "name.required" => "Kategori Adı Zorunlu Alandır",
+                "name.max"      => "Kategori Adı En Fazla 200 Karakterden Oluşabilir"
+            ]
+        );
+
+        $category = BlogCategory::findOrFail($id);
+        $category->name = $request->input("name");
+        $category->slug = Str::slug($request->input("name"));
+        $category->save();
+
+        toastr()->success("Blog Kategorisi Başarıyla Güncellendi", "Başarılı");
+
+        return redirect()->route("admin.blog-category.index");
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        $blogCategory = BlogCategory::findOrFail($id);
+        $blogCategory->delete();
     }
 }
