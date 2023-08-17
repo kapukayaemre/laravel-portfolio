@@ -57,4 +57,12 @@ class HomeController extends Controller
         $portfolioDetails = PortfolioItem::findOrFail($id);
         return view("frontend.portfolio-details", compact("portfolioDetails"));
     }
+
+    public function showBlog($id)
+    {
+        $blogDetails = Blog::findOrFail($id);
+        $previousPost = Blog::where("id", "<", $blogDetails->id)->orderBy("id", "DESC")->first();
+        $nextPost = Blog::where("id", ">", $blogDetails->id)->orderBy("id", "ASC")->first();
+        return view("frontend.blog-details", compact("blogDetails", "previousPost", "nextPost"));
+    }
 }
