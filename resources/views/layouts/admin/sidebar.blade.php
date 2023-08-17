@@ -173,7 +173,7 @@
                 </div>
 
                 <!--! SKILLS SECTION -->
-                <div data-kt-menu-trigger="click" class="menu-item menu-accordion {{ Route::is("admin.skills-section-settings.*")  ? "hover show" : "" }}">
+                <div data-kt-menu-trigger="click" class="menu-item menu-accordion {{ Route::is("admin.skills-section-settings.*") || Route::is("admin.skills-items.*")  ? "hover show" : "" }}">
                     <span class="menu-link">
                         <span class="menu-icon">
                             <!--begin::Svg Icon | path: icons/duotune/ecommerce/ecm007.svg-->
@@ -190,6 +190,16 @@
                         <span class="menu-title">Yetenekler Bölümü</span>
                         <span class="menu-arrow"></span>
                     </span>
+                    <div class="menu-sub menu-sub-accordion {{ Route::is("admin.skills-items.*") ? "menu-active-bg show" : "" }}">
+                        <div class="menu-item">
+                            <a class="menu-link {{ Route::is("admin.skills-items.*") ? "active" : "" }}" href="{{ route("admin.skills-items.index") }}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Yetenekler</span>
+                            </a>
+                        </div>
+                    </div>
                     <div class="menu-sub menu-sub-accordion {{ Route::is("admin.skills-section-settings.*") ? "menu-active-bg show" : "" }}">
                         <div class="menu-item">
                             <a class="menu-link {{ Route::is("admin.skills-section-settings.*") ? "active" : "" }}" href="{{ route("admin.skills-section-settings.index") }}">
