@@ -55,24 +55,37 @@ class FeedBackController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
-        //
+        $feedBack = FeedBack::findOrFail($id);
+        return view("backend.feedback.edit", compact("feedBack"));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(FeedBackStoreRequest $request, $id)
     {
-        //
+        $update = FeedBack::where("id", $id)->update([
+            "title"       => $request->input("title"),
+            "position"    => $request->input("position"),
+            "description" => $request->input("description")
+        ]);
+
+        $update ?
+            toastr()->success("Geri Bildirim Başarıyla Düzenlendi", "Başarılı") :
+            toastr()->error("İşlem Başarısız Sonuçlandı", "Başarısız");
+
+        return redirect()->route("admin.feedback.index");
+
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        $feedBack = FeedBack::findOrFail($id);
+        $feedBack->delete();
     }
 }

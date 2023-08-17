@@ -1,6 +1,6 @@
 @extends("layouts.admin")
 @section("title")
-    Portfolio Kategori
+    Geri Bildirimler
 @endsection
 
 @section("css")
@@ -13,7 +13,7 @@
         <div class="card-header border-0 cursor-pointer">
             <!--begin::Card title-->
             <div class="card-title m-0">
-                <h3 class="fw-bolder m-0">Portfolio Kategoriler</h3>
+                <h3 class="fw-bolder m-0">Tüm Geri Bildirimler</h3>
             </div>
             <div class="d-flex justify-content-end py-6 px-2">
                 <a href="{{ route("admin.feedback.create") }}" class="btn btn-sm btn-primary">Yeni Ekle</a>

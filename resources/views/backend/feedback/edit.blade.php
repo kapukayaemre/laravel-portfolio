@@ -1,6 +1,6 @@
 @extends("layouts.admin")
 @section("title")
-    Geri Bildirim Oluştur
+    Geri Bildirim Düzenle
 @endsection
 
 @section("css")
@@ -14,7 +14,7 @@
              aria-controls="kt_account_profile_details">
             <!--begin::Card title-->
             <div class="card-title m-0">
-                <h3 class="fw-bolder m-0">Geri Bildirim Oluştur</h3>
+                <h3 class="fw-bolder m-0">Geri Bildirim Düzenle</h3>
             </div>
             <!--end::Card title-->
         </div>
@@ -22,8 +22,9 @@
         <!--begin::Content-->
         <div id="kt_account_profile_details" class="collapse show">
             <!--begin::Form-->
-            <form action="{{ route("admin.feedback.store") }}" method="POST" class="form fv-plugins-bootstrap5 fv-plugins-framework">
+            <form action="{{ route("admin.feedback.update", $feedBack->id) }}" method="POST" class="form fv-plugins-bootstrap5 fv-plugins-framework">
                 @csrf
+                @method('PUT')
                 <!--begin::Card body-->
                 <div class="card-body border-top p-9">
                     <!--begin::Input group-->
@@ -37,7 +38,7 @@
                                    name="title"
                                    class="form-control form-control-lg form-control-solid"
                                    placeholder="Ana Başlık"
-                                   value="{{ old('title') }}"
+                                   value="{{ old('title', isset($feedBack) ? $feedBack->title : "") }}"
                             >
                             <div class="fv-plugins-message-container invalid-feedback"></div>
                         </div>
@@ -56,7 +57,7 @@
                                    name="position"
                                    class="form-control form-control-lg form-control-solid"
                                    placeholder="Pozisyon"
-                                   value="{{ old('position') }}"
+                                   value="{{ old('position', isset($feedBack) ? $feedBack->position : "") }}"
                             >
                             <div class="fv-plugins-message-container invalid-feedback"></div>
                         </div>
@@ -71,7 +72,7 @@
                         <!--end::Label-->
                         <!--begin::Col-->
                         <div class="col-lg-10 fv-row fv-plugins-icon-container">
-                            <textarea name="description" id="description">{{ old('description') }}</textarea>
+                            <textarea name="description" id="description">{!! old('description', isset($feedBack) ? $feedBack->description : "") !!}</textarea>
                             <div class="fv-plugins-message-container invalid-feedback"></div>
                         </div>
                         <!--end::Col-->
