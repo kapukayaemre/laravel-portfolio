@@ -56,15 +56,25 @@ class SkillItemsController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $skillItem = SkillItem::findOrFail($id);
+        return view("backend.skill-item.edit", compact("skillItem"));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(SkillItemStoreRequest $request, string $id)
     {
-        //
+        $update = SkillItem::where("id", $id)->update([
+            "name"    => $request->input("name"),
+            "percent" => $request->input("percent")
+        ]);
+
+        $update ?
+            toastr()->success("Yeni Yetenek Başarıyla Güncellendi", "Başarılı") :
+            toastr()->error("İşlem Başarısız Sonuçlandı", "Başarısız");
+
+        return redirect()->route("admin.skills-items.index");
     }
 
     /**
@@ -72,6 +82,7 @@ class SkillItemsController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $skillItem = SkillItem::findOrFail($id);
+        $skillItem->delete();
     }
 }

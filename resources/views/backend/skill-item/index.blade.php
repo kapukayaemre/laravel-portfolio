@@ -43,8 +43,8 @@
                         <td>{{ isset($skill) ? \Carbon\Carbon::parse($skill->created_at)->format("d-m-Y H:i") : "" }}</td>
                         <td>{{ isset($skill) ? \Carbon\Carbon::parse($skill->updated_at)->format("d-m-Y H:i") : "" }}</td>
                         <td class="d-flex justify-content-end">
-                            <a href="{{ route("admin.portfolio-item.edit" , $skill->id)  }}" class="btn btn-warning btn-sm mx-1"><i class="fa fa-edit"></i> <strong>Güncelle</strong></a>
-                            <a href="{{ route("admin.portfolio-item.destroy", $skill->id) }}" class="btn btn-danger btn-sm btnDelete"><i class="fa fa-trash"></i> <strong>Sil</strong></a>
+                            <a href="{{ route("admin.skills-items.edit" , $skill->id)  }}" class="btn btn-warning btn-sm mx-1"><i class="fa fa-edit"></i> <strong>Güncelle</strong></a>
+                            <a href="{{ route("admin.skills-items.destroy", $skill->id) }}" class="btn btn-danger btn-sm btnDelete"><i class="fa fa-trash"></i> <strong>Sil</strong></a>
                         </td>
                     </tr>
                 @endforeach
