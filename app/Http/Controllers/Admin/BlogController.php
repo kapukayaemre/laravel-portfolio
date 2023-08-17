@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\BlogStoreRequest;
+use App\Http\Requests\BlogUpdateRequest;
 use App\Models\Blog;
 use App\Models\BlogCategory;
 use Illuminate\Http\Request;
@@ -15,7 +16,7 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $blogs = Blog::all();
+        $blogs = Blog::with("category")->get();
         return view("backend.blog.index", compact("blogs"));
     }
 
@@ -58,17 +59,33 @@ class BlogController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
-        //
+        $categories = BlogCategory::all();
+        $blog = Blog::findOrFail($id);
+        return view("backend.blog.edit", compact("blog", "categories"));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(BlogUpdateRequest $request, $id)
     {
-        //
+        $blog = Blog::findOrFail($id);
+        $imagePath = handleUpload("image", $blog, "blog");
+
+        $create = Blog::where("id", $id)->update([
+            "image"       => (!empty($imagePath) ? $imagePath : $blog->image),
+            "title"       => $request->input("title"),
+            "description" => $request->input("description"),
+            "category_id" => $request->input("category_id")
+        ]);
+
+        $create ?
+            toastr()->success("Blog Başarıyla Güncellendi", "Başarılı") :
+            toastr()->error("İşlem Başarısız Sonuçlandı", "Başarısız");
+
+        return redirect()->route("admin.blog.index");
     }
 
     /**
@@ -76,6 +93,8 @@ class BlogController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $blog = Blog::findOrFail($id);
+        deleteFileIfExist($blog->image);
+        $blog->delete();
     }
 }

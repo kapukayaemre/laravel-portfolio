@@ -1,6 +1,6 @@
 @extends("layouts.admin")
 @section("title")
-    Portfolio İçerikleri
+    Blog İçerikler
 @endsection
 
 @section("css")
@@ -13,7 +13,7 @@
         <div class="card-header border-0 cursor-pointer">
             <!--begin::Card title-->
             <div class="card-title m-0">
-                <h3 class="fw-bolder m-0">Tüm Portfolio İçerikleri</h3>
+                <h3 class="fw-bolder m-0">Tüm Blog İçerikleri</h3>
             </div>
             <div class="d-flex justify-content-end py-6 px-2">
                 <a href="{{ route("admin.blog.create") }}" class="btn btn-sm btn-primary">Yeni Ekle</a>
@@ -27,8 +27,8 @@
                 <thead>
                 <tr class="fw-bolder fs-6 text-gray-800 px-7">
                     <th>#</th>
-                    <th>Başlık</th>
                     <th>Resim</th>
+                    <th>Başlık</th>
                     <th>Açıklama</th>
                     <th>Kategori</th>
                     <th>Oluşturulma Tarihi</th>
@@ -47,8 +47,8 @@
                         <td>{{ isset($blog) ? \Carbon\Carbon::parse($blog->created_at)->format("d-m-Y H:i") : "" }}</td>
                         <td>{{ isset($blog) ? \Carbon\Carbon::parse($blog->updated_at)->format("d-m-Y H:i") : "" }}</td>
                         <td class="d-flex justify-content-end">
-                            <a href="{{ route("admin.portfolio-item.edit" , $blog->id)  }}" class="btn btn-warning btn-sm mx-1"><i class="fa fa-edit"></i> <strong>Güncelle</strong></a>
-                            <a href="{{ route("admin.portfolio-item.destroy", $blog->id) }}" class="btn btn-danger btn-sm btnDelete"><i class="fa fa-trash"></i> <strong>Sil</strong></a>
+                            <a href="{{ route("admin.blog.edit" , $blog->id)  }}" class="btn btn-warning btn-sm mx-1"><i class="fa fa-edit"></i> <strong>Güncelle</strong></a>
+                            <a href="{{ route("admin.blog.destroy", $blog->id) }}" class="btn btn-danger btn-sm btnDelete"><i class="fa fa-trash"></i> <strong>Sil</strong></a>
                         </td>
                     </tr>
                 @endforeach
