@@ -288,13 +288,24 @@
                         <span class="menu-arrow"></span>
                     </span>
 
-                    <div class="menu-sub menu-sub-accordion {{ Route::is("admin.blog-category.*") ? "menu-active-bg show" : "" }}">
+                    <div class="menu-sub menu-sub-accordion {{ Route::is("admin.blog-category.*") || Route::is("admin.blog.*") ? "menu-active-bg show" : "" }}">
                         <div class="menu-item">
                             <a class="menu-link {{ Route::is("admin.blog-category.*") ? "active" : "" }}" href="{{ route("admin.blog-category.index") }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
                                 <span class="menu-title">Kategoriler</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="menu-sub menu-sub-accordion {{ Route::is("admin.blog.*") ? "menu-active-bg show" : "" }}">
+                        <div class="menu-item">
+                            <a class="menu-link {{ Route::is("admin.blog.*") ? "active" : "" }}" href="{{ route("admin.blog.index") }}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Blog Listesi</span>
                             </a>
                         </div>
                     </div>
