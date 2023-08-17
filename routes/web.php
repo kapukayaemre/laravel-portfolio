@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AboutController;
+use App\Http\Controllers\Admin\BlogCategoryController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ExperiencesController;
@@ -87,4 +88,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
 
     /*** FeedBack Section Settings Routes */
     Route::resource("feedback-section-settings", FeedBackSettingsController::class);
+
+    /*** Blog Category Routes */
+    Route::resource("blog-category", BlogCategoryController::class);
 });
