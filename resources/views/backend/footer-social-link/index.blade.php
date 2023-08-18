@@ -16,7 +16,7 @@
                 <h3 class="fw-bolder m-0">Footer Sosyal Medya Linkleri</h3>
             </div>
             <div class="d-flex justify-content-end py-6 px-2">
-                <a href="{{ route("admin.footer-social.store") }}" class="btn btn-sm btn-primary">Yeni Ekle</a>
+                <a href="{{ route("admin.footer-social.create") }}" class="btn btn-sm btn-primary">Yeni Ekle</a>
             </div>
             <!--end::Card title-->
         </div>
