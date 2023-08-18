@@ -10,27 +10,25 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#home-page">Home</a>
+                    <a class="nav-link active" aria-current="page" href="{{ Route::currentRouteName() === "home" ? "#home-page" : url("/") }}">Anasayfa</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#about-page">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#portfolio-page">Portfolio <i class="fas fa-angle-down"></i></a>
-                    <ul class="sub_menu">
-                        <li><a href="portfolio.html">Portfolio Grid</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#skills-page">Skills</a>
-                </li>
+                @if(Route::currentRouteName() === "home")
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about-page">Hakkımda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#portfolio-page">Portfolio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#skills-page">Yetenekler</a>
+                    </li>
 
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact-page">İletişim</a>
+                    </li>
+                @endif
                 <li class="nav-item">
-                    <a class="nav-link" href="#contact-page">Contact</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route("home.blogs") }}">Blogs</a>
+                    <a class="nav-link" href="{{ route("home.blogs") }}">Bloglar</a>
                 </li>
 
             </ul>
