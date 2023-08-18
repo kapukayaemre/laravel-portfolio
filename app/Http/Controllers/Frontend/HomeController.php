@@ -9,6 +9,7 @@ use App\Models\About;
 use App\Models\Blog;
 use App\Models\BlogSetting;
 use App\Models\Category;
+use App\Models\ContactSetting;
 use App\Models\Experience;
 use App\Models\FeedBack;
 use App\Models\FeedBackSetting;
@@ -40,6 +41,7 @@ class HomeController extends Controller
         $feedBackSettings = FeedBackSetting::first();
         $blogs = Blog::latest()->take(5)->get();
         $blogSettings = BlogSetting::first();
+        $contactSettings = ContactSetting::first();
         return view("frontend.home", compact(
             "hero",
             "typerTitles",
@@ -54,7 +56,8 @@ class HomeController extends Controller
             "feedBacks",
             "feedBackSettings",
             "blogs",
-            "blogSettings"
+            "blogSettings",
+            "contactSettings"
         ));
     }
 
