@@ -54,24 +54,35 @@ class FooterUsefulLinkController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
-        //
+        $usefulLink = FooterUsefulLink::findOrFail($id);
+        return view("backend.footer-useful-link.edit", compact("usefulLink"));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(FooterUsefulLinkStoreRequest $request, $id)
     {
-        //
+        $create = FooterUsefulLink::where("id", $id)->update([
+            "name" => $request->input("name"),
+            "url"  => $request->input("url")
+        ]);
+
+        $create ?
+            toastr()->success("Footer Kullanışlı Link Başarıyla Güncellendi", "Başarılı") :
+            toastr()->error("İşlem Başarısız Sonuçlandı", "Başarısız");
+
+        return redirect()->route("admin.footer-useful-links.index");
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        $usefulLink = FooterUsefulLink::findOrFail($id);
+        $usefulLink->delete();
     }
 }
