@@ -359,7 +359,8 @@
                      {{ Route::is("admin.footer-social.*") ||
                         Route::is("admin.footer-info.*") ||
                         Route::is("admin.footer-contact-info.*") ||
-                        Route::is("admin.footer-useful-links.*") ? "hover show" : "" }}">
+                        Route::is("admin.footer-useful-links.*") ||
+                        Route::is("admin.footer-help-links.*") ? "hover show" : "" }}">
                     <span class="menu-link">
                         <span class="menu-icon">
                             <!--begin::Svg Icon | path: icons/duotune/ecommerce/ecm007.svg-->
@@ -420,8 +421,18 @@
                             </a>
                         </div>
                     </div>
-                </div>
 
+                    <div class="menu-sub menu-sub-accordion {{ Route::is("admin.footer-help-links.*") ? "menu-active-bg show" : "" }}">
+                        <div class="menu-item">
+                            <a class="menu-link {{ Route::is("admin.footer-help-links.*") ? "active" : "" }}" href="{{ route("admin.footer-help-links.index") }}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Yardım Linkleri</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
             <!--end::Menu-->
         </div>
