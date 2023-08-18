@@ -51,6 +51,7 @@ require __DIR__.'/auth.php';
 Route::get("portfolio-details/{id}", [HomeController::class, "showPortfolio"])->name("home.show-portfolio");
 Route::get("blog-details/{id}", [HomeController::class, "showBlog"])->name("home.show-blog");
 Route::get("blogs", [HomeController::class, "blogs"])->name("home.blogs");
+Route::post("contact", [HomeController::class, "contact"])->name("home.contact");
 
 /*** Admin Routes */
 Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], function () {

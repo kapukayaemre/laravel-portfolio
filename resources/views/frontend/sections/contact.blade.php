@@ -19,39 +19,38 @@
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-box">
-                                <input type="text" name="form-name" id="form-name" class="input-box"
-                                       placeholder="Name">
+                                <input type="text" name="name" id="form-name" class="input-box"
+                                       placeholder="Adınız">
                                 <label for="form-name" class="icon lb-name"><i class="fal fa-user"></i></label>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-box">
-                                <input type="text" name="form-email" id="form-email" class="input-box"
-                                       placeholder="Email">
+                                <input type="text" name="email" id="form-email" class="input-box"
+                                       placeholder="Email Adresiniz">
                                 <label for="form-email" class="icon lb-email"><i
                                         class="fal fa-envelope"></i></label>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-box">
-                                <input type="text" name="form-subject" id="form-subject" class="input-box"
-                                       placeholder="Subject">
+                                <input type="text" name="subject" id="form-subject" class="input-box"
+                                       placeholder="Konu">
                                 <label for="form-subject" class="icon lb-subject"><i
                                         class="fal fa-check-square"></i></label>
                             </div>
                         </div>
                         <div class="col-sm-12">
                             <div class="form-box">
-										<textarea class="input-box" id="form-message" placeholder="Message" cols="30"
-                                                  rows="4" name="form-message"></textarea>
-                                <label for="form-message" class="icon lb-message"><i
-                                        class="fal fa-edit"></i></label>
+                                <textarea class="input-box" id="form-message" placeholder="Mesajınız" cols="30" rows="4" name="message"></textarea>
+                                <label for="form-message" class="icon lb-message">
+                                    <i class="fal fa-edit"></i>
+                                </label>
                             </div>
                         </div>
                         <div class="col-sm-12">
                             <div class="form-box">
-                                <button class="button-primary mouse-dir" type="submit">Send Now <span
-                                        class="dir-part"></span></button>
+                                <button class="button-primary mouse-dir" type="submit" id="btnSubmit">Gönder <span class="dir-part"></span></button>
                             </div>
                         </div>
                     </div>
@@ -61,3 +60,46 @@
         </div>
     </div>
 </section>
+@push("scripts")
+    <script>
+        $(document).ready(function () {
+            $(document).on("submit", "#contact-form", function (event) {
+                event.preventDefault();
+                $.ajax({
+                    type: "POST",
+                    url: "{{ route("home.contact") }}",
+                    data: $(this).serialize(),
+                    beforeSend: function ()
+                    {
+                        $("#btnSubmit").prop("disabled", true);
+                        $("#btnSubmit").text('Bekleyiniz...');
+                    },
+                    success: function (response)
+                    {
+                        if(response.status === "success")
+                        {
+                            toastr.success(response.message)
+                            $("#btnSubmit").prop("disabled", false);
+                            $("#btnSubmit").text('Gönder');
+                            $("#contact-form").trigger("reset");
+                        }
+                    },
+                    error: function (response)
+                    {
+                        if(response.status === 422)
+                        {
+                            let errorMessages = $.parseJSON(response.responseText)
+
+                            $.each(errorMessages.errors, function (key, val) {
+                                toastr.error(val[0])
+                            })
+
+                            $("#btnSubmit").prop("disabled", false);
+                            $("#btnSubmit").text('Gönder');
+                        }
+                    }
+                })
+            });
+        });
+    </script>
+@endpush
