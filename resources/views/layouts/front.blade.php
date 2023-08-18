@@ -1,5 +1,9 @@
+@php
+    $generalSettings = \App\Models\GeneralSetting::first();
+@endphp
+
 <!doctype html>
-<html class="no-js" lang="en">
+<html class="no-js" lang="tr">
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -7,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield("title", "Personel Portfolio Website")</title>
-    <link rel="shortcut icon" type="image/ico" href="{{ asset("frontend/assets/images/favicon.png") }}" />
+    <link rel="shortcut icon" type="image/ico" href="{{ isset($generalSettings) ? asset($generalSettings->favicon) : asset("frontend/assets/images/favicon.png") }}" />
     <link rel="stylesheet" href="{{ asset("frontend/assets/css/bootstrap.min.css") }}">
     <link rel="stylesheet" href="{{ asset("frontend/assets/css/normalize.css") }}">
     <link rel="stylesheet" href="{{ asset("frontend/assets/css/style-plugin-collection.css") }}">
