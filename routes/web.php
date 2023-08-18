@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AboutController;
 use App\Http\Controllers\Admin\BlogCategoryController;
 use App\Http\Controllers\Admin\BlogController;
+use App\Http\Controllers\Admin\BlogSettingsController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ExperiencesController;
@@ -36,10 +37,6 @@ Route::get('/blog', function () {
     return view('frontend.blog');
 });
 
-Route::get('/blog-details', function () {
-    return view('frontend.blog-details');
-});
-
 
 Route::get('/dashboard', [DashboardController::class, "index"])->middleware(['auth', 'verified'])->name('dashboard');
 
@@ -53,6 +50,7 @@ require __DIR__.'/auth.php';
 
 Route::get("portfolio-details/{id}", [HomeController::class, "showPortfolio"])->name("home.show-portfolio");
 Route::get("blog-details/{id}", [HomeController::class, "showBlog"])->name("home.show-blog");
+Route::get("blogs", [HomeController::class, "blogs"])->name("home.blogs");
 
 /*** Admin Routes */
 Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], function () {
@@ -96,4 +94,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
 
     /*** Blog Routes */
     Route::resource("blog", BlogController::class);
+
+    /*** Blog Section Settings Routes */
+    Route::resource("blog-section-settings", BlogSettingsController::class);
 });

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\About;
 use App\Models\Blog;
+use App\Models\BlogSetting;
 use App\Models\Category;
 use App\Models\Experience;
 use App\Models\FeedBack;
@@ -35,6 +36,7 @@ class HomeController extends Controller
         $feedBacks = FeedBack::all();
         $feedBackSettings = FeedBackSetting::first();
         $blogs = Blog::latest()->take(5)->get();
+        $blogSettings = BlogSetting::first();
         return view("frontend.home", compact(
             "hero",
             "typerTitles",
@@ -48,7 +50,8 @@ class HomeController extends Controller
             "experiences",
             "feedBacks",
             "feedBackSettings",
-            "blogs"
+            "blogs",
+            "blogSettings"
         ));
     }
 
@@ -64,5 +67,11 @@ class HomeController extends Controller
         $previousPost = Blog::where("id", "<", $blogDetails->id)->orderBy("id", "DESC")->first();
         $nextPost = Blog::where("id", ">", $blogDetails->id)->orderBy("id", "ASC")->first();
         return view("frontend.blog-details", compact("blogDetails", "previousPost", "nextPost"));
+    }
+
+    public function blogs()
+    {
+        $blogs = Blog::latest()->paginate(9);
+        return view("frontend.blog", compact("blogs"));
     }
 }
