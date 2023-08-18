@@ -63,24 +63,45 @@ class FooterSocialLinksController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
-        //
+        $socialLink = FooterSocialLink::findOrFail($id);
+        return view("backend.footer-social-link.edit", compact("socialLink"));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate(
+            [
+                "icon" => ["required"],
+                "url"  => ["required"]
+            ],
+            [
+                "icon.required" => "Icon Alanı Boş Geçilemez",
+                "url.required"  => "URL Alanı Boş Geçilemez"
+            ]);
+
+        $create = FooterSocialLink::where("id", $id)->update([
+            "icon" => $request->input("icon"),
+            "url"  => $request->input("url")
+        ]);
+
+        $create ?
+            toastr()->success("Footer Sosyal Linki Başarıyla Güncellendi", "Başarılı") :
+            toastr()->error("İşlem Başarısız Sonuçlandı", "Başarısız");
+
+        return redirect()->route("admin.footer-social.index");
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        $socialLink = FooterSocialLink::findOrFail($id);
+        $socialLink->delete();
     }
 }

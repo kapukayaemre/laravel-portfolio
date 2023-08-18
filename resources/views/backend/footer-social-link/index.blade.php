@@ -43,8 +43,8 @@
                         <td>{{ isset($socialLink) ? \Carbon\Carbon::parse($socialLink->created_at)->format("d-m-Y H:i") : "" }}</td>
                         <td>{{ isset($socialLink) ? \Carbon\Carbon::parse($socialLink->updated_at)->format("d-m-Y H:i") : "" }}</td>
                         <td class="d-flex justify-content-end">
-                            <a href="{{ route("admin.feedback.edit" , $socialLink->id)  }}" class="btn btn-warning btn-sm mx-1"><i class="fa fa-edit"></i> <strong>Güncelle</strong></a>
-                            <a href="{{ route("admin.feedback.destroy", $socialLink->id) }}" class="btn btn-danger btn-sm btnDelete"><i class="fa fa-trash"></i> <strong>Sil</strong></a>
+                            <a href="{{ route("admin.footer-social.edit" , $socialLink->id)  }}" class="btn btn-warning btn-sm mx-1"><i class="fa fa-edit"></i> <strong>Güncelle</strong></a>
+                            <a href="{{ route("admin.footer-social.destroy", $socialLink->id) }}" class="btn btn-danger btn-sm btnDelete"><i class="fa fa-trash"></i> <strong>Sil</strong></a>
                         </td>
                     </tr>
                 @endforeach
