@@ -1,5 +1,6 @@
 @php
     $generalSettings = \App\Models\GeneralSetting::first();
+    $seoSettings = \App\Models\SeoSetting::first();
 @endphp
 
 <!doctype html>
@@ -10,7 +11,9 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>@yield("title", "Personel Portfolio Website")</title>
+    <meta name="description" content="{!! isset($seoSettings) ? $seoSettings->description : "" !!}">
+    <meta name="keywords" content="{!! isset($seoSettings) ? $seoSettings->keywords : "" !!}">
+    <title>@yield("title", "{{ isset($seoSettings) ? $seoSettings->title : 'Kişisel Portfolio Sitesi' }}")</title>
     <link rel="shortcut icon" type="image/ico" href="{{ isset($generalSettings) ? asset($generalSettings->favicon) : asset("frontend/assets/images/favicon.png") }}" />
     <link rel="stylesheet" href="{{ asset("frontend/assets/css/bootstrap.min.css") }}">
     <link rel="stylesheet" href="{{ asset("frontend/assets/css/normalize.css") }}">

@@ -436,7 +436,7 @@
 
                 <!--! SETTINGS LINK -->
                 <div class="menu-item">
-                    <a class="menu-link {{ Route::is("admin.settings.index") ? "active" : "" }}" href="{{ route("admin.settings.index") }}">
+                    <a class="menu-link {{ Route::is("admin.settings.index") || Route::is("admin.general-settings.*") || Route::is("admin.seo-settings.*") ? "active" : "" }}" href="{{ route("admin.settings.index") }}">
                         <span class="menu-icon">
                             <!--begin::Svg Icon | path: icons/duotune/general/gen025.svg-->
                             <span class="svg-icon svg-icon-2">

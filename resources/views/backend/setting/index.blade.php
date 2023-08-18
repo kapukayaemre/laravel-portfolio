@@ -73,7 +73,7 @@
                                 </div>
                                 <h1 class="mb-5">SEO</h1>
                                 <div class="fs-4 text-gray-600 py-3">Bu buton aracılığıyla SEO ayarlarına yönlenebilirsiniz</div>
-                                <a href="../../demo1/dist/documentation/forms/flatpickr.html" class="btn btn-lg btn-flex btn-link btn-color-success">Şimdi Güncelle!
+                                <a href="{{ route("admin.seo-settings.index") }}" class="btn btn-lg btn-flex btn-link btn-color-success">Şimdi Güncelle!
                                     <!--begin::Svg Icon | path: icons/duotune/arrows/arr064.svg-->
                                     <span class="svg-icon ms-2 svg-icon-3">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
