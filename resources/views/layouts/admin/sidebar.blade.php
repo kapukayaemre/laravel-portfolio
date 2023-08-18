@@ -372,13 +372,24 @@
                         <span class="menu-arrow"></span>
                     </span>
 
-                    <div class="menu-sub menu-sub-accordion {{ Route::is("admin.footer-social.*") ? "menu-active-bg show" : "" }}">
+                    <div class="menu-sub menu-sub-accordion {{ Route::is("admin.footer-social.*") || Route::is("admin.footer-info.*") ? "menu-active-bg show" : "" }}">
                         <div class="menu-item">
                             <a class="menu-link {{ Route::is("admin.footer-social.*") ? "active" : "" }}" href="{{ route("admin.footer-social.index") }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
                                 <span class="menu-title">Sosyal Medya Linkleri</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="menu-sub menu-sub-accordion {{ Route::is("admin.footer-info.*") ? "menu-active-bg show" : "" }}">
+                        <div class="menu-item">
+                            <a class="menu-link {{ Route::is("admin.footer-info.*") ? "active" : "" }}" href="{{ route("admin.footer-info.index") }}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Footer Bilgiler</span>
                             </a>
                         </div>
                     </div>
