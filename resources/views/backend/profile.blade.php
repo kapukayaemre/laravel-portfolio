@@ -225,9 +225,9 @@
                         <div class="card-body border-top p-9">
 
                             <!--begin::Input group profile image-->
-                            <div class="row mb-6">
+                            <div class="row mb-6 offset-1">
                                 <!--begin::Label-->
-                                <label class="col-lg-4 col-form-label fw-bold fs-6">Profil Resmi</label>
+                                <label class="col-lg-2 col-form-label fw-bold fs-6">Profil Resmi</label>
                                 <!--end::Label-->
                                 <!--begin::Col-->
                                 <div class="col-lg-8">
@@ -278,9 +278,9 @@
                             <!--end::Input group-->
 
                             <!--begin::Input group first_name & last_name -->
-                            <div class="row mb-6">
+                            <div class="row mb-6 offset-1">
                                 <!--begin::Label-->
-                                <label class="col-lg-4 col-form-label required fw-bold fs-6">Ad Soyad</label>
+                                <label class="col-lg-2 col-form-label required fw-bold fs-6">Ad Soyad</label>
                                 <!--end::Label-->
                                 <!--begin::Col-->
                                 <div class="col-lg-8">
@@ -318,9 +318,9 @@
                             <!--end::Input group-->
 
                             <!--begin::Input group phone-->
-                            <div class="row mb-6">
+                            <div class="row mb-6 offset-1">
                                 <!--begin::Label-->
-                                <label class="col-lg-4 col-form-label fw-bold fs-6">
+                                <label class="col-lg-2 col-form-label fw-bold fs-6">
                                     <span class="required">Telefon</span>
                                     <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip" title="Telefon Numarası Aktif Olmak Zorundadır"></i>
                                 </label>
@@ -341,9 +341,9 @@
                             <!--end::Input group-->
 
                             <!--begin::Input group email -->
-                            <div class="row mb-6">
+                            <div class="row mb-6 offset-1">
                                 <!--begin::Label-->
-                                <label class="col-lg-4 col-form-label required fw-bold fs-6">E-mail</label>
+                                <label class="col-lg-2 col-form-label required fw-bold fs-6">E-mail</label>
                                 <!--end::Label-->
                                 <!--begin::Col-->
                                 <div class="col-lg-8">
@@ -361,9 +361,9 @@
                             <!--end::Input group-->
 
                             <!--begin::Input group github profile link -->
-                            <div class="row mb-6">
+                            <div class="row mb-6 offset-1">
                                 <!--begin::Label-->
-                                <label class="col-lg-4 col-form-label fw-bold fs-6">Github</label>
+                                <label class="col-lg-2 col-form-label fw-bold fs-6">Github</label>
                                 <!--end::Label-->
                                 <!--begin::Col-->
                                 <div class="col-lg-8">
@@ -374,9 +374,9 @@
                             <!--end::Input group-->
 
                             <!--begin::Input group linkedin profile link -->
-                            <div class="row mb-6">
+                            <div class="row mb-6 offset-1">
                                 <!--begin::Label-->
-                                <label class="col-lg-4 col-form-label fw-bold fs-6">Linkedin</label>
+                                <label class="col-lg-2 col-form-label fw-bold fs-6">Linkedin</label>
                                 <!--end::Label-->
                                 <!--begin::Col-->
                                 <div class="col-lg-8">
@@ -387,9 +387,9 @@
                             <!--end::Input group-->
 
                             <!--begin::Input group facebook profile link -->
-                            <div class="row mb-6">
+                            <div class="row mb-6 offset-1">
                                 <!--begin::Label-->
-                                <label class="col-lg-4 col-form-label fw-bold fs-6">Facebook</label>
+                                <label class="col-lg-2 col-form-label fw-bold fs-6">Facebook</label>
                                 <!--end::Label-->
                                 <!--begin::Col-->
                                 <div class="col-lg-8">
@@ -400,9 +400,9 @@
                             <!--end::Input group-->
 
                             <!--begin::Input group twitter profile link -->
-                            <div class="row mb-6">
+                            <div class="row mb-6 offset-1">
                                 <!--begin::Label-->
-                                <label class="col-lg-4 col-form-label fw-bold fs-6">Twitter</label>
+                                <label class="col-lg-2 col-form-label fw-bold fs-6">Twitter</label>
                                 <!--end::Label-->
                                 <!--begin::Col-->
                                 <div class="col-lg-8">
@@ -413,9 +413,9 @@
                             <!--end::Input group-->
 
                             <!--begin::Input group instagram profile link -->
-                            <div class="row mb-6">
+                            <div class="row mb-6 offset-1">
                                 <!--begin::Label-->
-                                <label class="col-lg-4 col-form-label fw-bold fs-6">Instagram</label>
+                                <label class="col-lg-2 col-form-label fw-bold fs-6">Instagram</label>
                                 <!--end::Label-->
                                 <!--begin::Col-->
                                 <div class="col-lg-8">

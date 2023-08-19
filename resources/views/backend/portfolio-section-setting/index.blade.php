@@ -28,12 +28,12 @@
                 <!--begin::Card body-->
                 <div class="card-body border-top p-9">
                     <!--begin::Input group-->
-                    <div class="row mb-6">
+                    <div class="row mb-6 offset-1">
                         <!--begin::Label-->
                         <label class="col-lg-2 col-form-label required fw-bold fs-6">Ana Başlık</label>
                         <!--end::Label-->
                         <!--begin::Col-->
-                        <div class="col-lg-10 fv-row fv-plugins-icon-container">
+                        <div class="col-lg-8 fv-row fv-plugins-icon-container">
                             <input type="text"
                                    name="title"
                                    class="form-control form-control-lg form-control-solid"
@@ -47,12 +47,12 @@
                     <!--end::Input group-->
 
                     <!--begin::Input group-->
-                    <div class="row mb-6">
+                    <div class="row mb-6 offset-1">
                         <!--begin::Label-->
                         <label class="col-lg-2 col-form-label required fw-bold fs-6">Alt Başlık</label>
                         <!--end::Label-->
                         <!--begin::Col-->
-                        <div class="col-lg-10 fv-row fv-plugins-icon-container">
+                        <div class="col-lg-8 fv-row fv-plugins-icon-container">
                             <textarea name="sub_title" id="sub_title">{!! old("sub_title", isset($portfoliSectionSettings) ? $portfoliSectionSettings->sub_title : "") !!}</textarea>
                             <div class="fv-plugins-message-container invalid-feedback"></div>
                         </div>
@@ -65,6 +65,7 @@
                 <!--begin::Actions-->
                 <div class="card-footer d-flex justify-content-end py-6 px-9">
                     <button type="reset" class="btn btn-light btn-active-light-primary me-2">Sıfırla</button>
+                    <a href="javascript:history.back()" class="btn btn-light-warning me-2">Geri</a>
                     <button type="submit" class="btn btn-primary" id="kt_account_profile_details_submit">Kaydet
                     </button>
                 </div>

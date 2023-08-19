@@ -28,18 +28,18 @@
                 <!--begin::Card body-->
                 <div class="card-body border-top p-9">
                     <!--begin::Input group-->
-                    <div class="row mb-6">
+                    <div class="row mb-6 offset-1">
                         <!--begin::Label-->
                         <label class="col-lg-2 col-form-label fw-bold fs-6">Logo</label>
                         <!--end::Label-->
                         <!--begin::Col-->
-                        <div class="col-lg-10">
+                        <div class="col-lg-8">
                             <!--begin::Image input-->
                             <div class="image-input image-input-outline"
                                  data-kt-image-input="true"
                                  style="background-image: url({{ asset("assets/assets/media/avatars/blank.png") }})">
                                 <!--begin::Preview existing avatar-->
-                                <div class="image-input-wrapper w-400px h-200px"
+                                <div class="image-input-wrapper w-125px h-125px"
                                      style="background-image: url({{ isset($logos) ? asset($logos->logo) : asset("assets/assets/media/avatars/150-5.jpg") }});   background-size: contain; background-position: center; width: 100%; height: 300px">
                                 </div>
                                 <!--end::Preview existing avatar-->
@@ -74,6 +74,7 @@
                             <!--end::Image input-->
                             <!--begin::Hint-->
                             <div class="form-text">Desteklenen Formatlar: png, jpg, jpeg.</div>
+                            <div class="form-text">Desteklenen Maksimum Boyut: 5 MB.</div>
                             <!--end::Hint-->
                         </div>
                         <!--end::Col-->
@@ -81,18 +82,18 @@
                     <!--end::Input group-->
 
                     <!--begin::Input group-->
-                    <div class="row mb-6">
+                    <div class="row mb-6 offset-1">
                         <!--begin::Label-->
                         <label class="col-lg-2 col-form-label fw-bold fs-6">Footer Logo</label>
                         <!--end::Label-->
                         <!--begin::Col-->
-                        <div class="col-lg-10">
+                        <div class="col-lg-8">
                             <!--begin::Image input-->
                             <div class="image-input image-input-outline"
                                  data-kt-image-input="true"
                                  style="background-image: url({{ asset("assets/assets/media/avatars/blank.png") }})">
                                 <!--begin::Preview existing avatar-->
-                                <div class="image-input-wrapper w-400px h-200px"
+                                <div class="image-input-wrapper w-125px h-125px"
                                      style="background-image: url({{ isset($logos) ? asset($logos->footer_logo) : asset("assets/assets/media/avatars/150-5.jpg") }});   background-size: contain; background-position: center; width: 100%; height: 300px">
                                 </div>
                                 <!--end::Preview existing avatar-->
@@ -127,6 +128,7 @@
                             <!--end::Image input-->
                             <!--begin::Hint-->
                             <div class="form-text">Desteklenen Formatlar: png, jpg, jpeg.</div>
+                            <div class="form-text">Desteklenen Maksimum Boyut: 5 MB.</div>
                             <!--end::Hint-->
                         </div>
                         <!--end::Col-->
@@ -134,18 +136,18 @@
                     <!--end::Input group-->
 
                     <!--begin::Input group-->
-                    <div class="row mb-6">
+                    <div class="row mb-6 offset-1">
                         <!--begin::Label-->
                         <label class="col-lg-2 col-form-label fw-bold fs-6">Favicon</label>
                         <!--end::Label-->
                         <!--begin::Col-->
-                        <div class="col-lg-10">
+                        <div class="col-lg-8">
                             <!--begin::Image input-->
                             <div class="image-input image-input-outline"
                                  data-kt-image-input="true"
                                  style="background-image: url({{ asset("assets/assets/media/avatars/blank.png") }})">
                                 <!--begin::Preview existing avatar-->
-                                <div class="image-input-wrapper w-400px h-200px"
+                                <div class="image-input-wrapper w-125px h-125px"
                                      style="background-image: url({{ isset($logos) ? asset($logos->favicon) : asset("assets/assets/media/avatars/150-5.jpg") }});   background-size: contain; background-position: center; width: 100%; height: 300px">
                                 </div>
                                 <!--end::Preview existing avatar-->
@@ -180,6 +182,7 @@
                             <!--end::Image input-->
                             <!--begin::Hint-->
                             <div class="form-text">Desteklenen Formatlar: png, jpg, jpeg.</div>
+                            <div class="form-text">Desteklenen Maksimum Boyut: 5 MB.</div>
                             <!--end::Hint-->
                         </div>
                         <!--end::Col-->
@@ -190,6 +193,7 @@
                 <!--begin::Actions-->
                 <div class="card-footer d-flex justify-content-end py-6 px-9">
                     <button type="reset" class="btn btn-light btn-active-light-primary me-2">Sıfırla</button>
+                    <a href="javascript:history.back()" class="btn btn-light-warning me-2">Geri</a>
                     <button type="submit" class="btn btn-primary" id="kt_account_profile_details_submit">Kaydet
                     </button>
                 </div>

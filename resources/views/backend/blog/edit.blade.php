@@ -28,18 +28,18 @@
                 <!--begin::Card body-->
                 <div class="card-body border-top p-9">
                     <!--begin::Input group-->
-                    <div class="row mb-6">
+                    <div class="row mb-6 offset-1">
                         <!--begin::Label-->
                         <label class="col-lg-2 col-form-label fw-bold fs-6">Portfolio İçerik Resim</label>
                         <!--end::Label-->
                         <!--begin::Col-->
-                        <div class="col-lg-10">
+                        <div class="col-lg-8">
                             <!--begin::Image input-->
                             <div class="image-input image-input-outline"
                                  data-kt-image-input="true"
                                  style="background-image: url({{ asset("assets/assets/media/avatars/blank.png") }})">
                                 <!--begin::Preview existing avatar-->
-                                <div class="image-input-wrapper w-400px h-200px"
+                                <div class="image-input-wrapper w-125px h-125px"
                                      style="background-image: url({{ isset($blog) ? asset($blog->image) : asset("assets/assets/media/avatars/blank.png") }});   background-size: contain; background-position: center; width: 100%; height: 300px">
                                 </div>
                                 <!--end::Preview existing avatar-->
@@ -81,12 +81,12 @@
                     <!--end::Input group-->
 
                     <!--begin::Input group-->
-                    <div class="row mb-6">
+                    <div class="row mb-6 offset-1">
                         <!--begin::Label-->
                         <label class="col-lg-2 col-form-label required fw-bold fs-6">Başlık</label>
                         <!--end::Label-->
                         <!--begin::Col-->
-                        <div class="col-lg-10 fv-row fv-plugins-icon-container">
+                        <div class="col-lg-8 fv-row fv-plugins-icon-container">
                             <input type="text"
                                    name="title"
                                    class="form-control form-control-lg form-control-solid"
@@ -99,7 +99,7 @@
                     </div>
                     <!--end::Input group-->
 
-                    <div class="row mb-6">
+                    <div class="row mb-6 offset-1">
                         <!--begin::Label-->
                         <label class="col-lg-2 col-form-label fw-bold fs-6">
                             <span class="required">Kategori</span>
@@ -107,7 +107,7 @@
                         </label>
                         <!--end::Label-->
                         <!--begin::Col-->
-                        <div class="col-lg-10 fv-row fv-plugins-icon-container">
+                        <div class="col-lg-8 fv-row fv-plugins-icon-container">
                             <select name="category_id" aria-label="Select a Country" data-control="select2" data-placeholder="Kategori Seçiniz" class="form-select form-select-solid form-select-lg fw-bold select2-hidden-accessible" data-select2-id="select2-data-10-qusw" tabindex="-1" aria-hidden="true">
                                 <option value="" data-select2-id="select2-data-12-873f">Bir Kategori Seç...</option>
                                 @foreach($categories as $category)
@@ -120,12 +120,12 @@
                     </div>
 
                     <!--begin::Input group-->
-                    <div class="row mb-6">
+                    <div class="row mb-6 offset-1">
                         <!--begin::Label-->
                         <label class="col-lg-2 col-form-label required fw-bold fs-6">Açıklama</label>
                         <!--end::Label-->
                         <!--begin::Col-->
-                        <div class="col-lg-10 fv-row fv-plugins-icon-container">
+                        <div class="col-lg-8 fv-row fv-plugins-icon-container">
                             <textarea name="description" id="description">{!! old("description", isset($blog) ? $blog->description : "") !!}</textarea>
                             <div class="fv-plugins-message-container invalid-feedback"></div>
                         </div>
@@ -137,6 +137,7 @@
                 <!--begin::Actions-->
                 <div class="card-footer d-flex justify-content-end py-6 px-9">
                     <button type="reset" class="btn btn-light btn-active-light-primary me-2">Sıfırla</button>
+                    <a href="javascript:history.back()" class="btn btn-light-warning me-2">Geri</a>
                     <button type="submit" class="btn btn-primary" id="kt_account_profile_details_submit">Kaydet
                     </button>
                 </div>

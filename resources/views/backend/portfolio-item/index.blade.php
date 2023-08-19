@@ -44,15 +44,17 @@
                         <td>{{ $loop->iteration }}</td>
                         <td>{!! isset($portfolioItem) ? '<img src="' . asset($portfolioItem->image) . '" alt="" height="50">' : "" !!}</td>
                         <td>{{ isset($portfolioItem) ? $portfolioItem->title : "" }}</td>
-                        <td>{!! isset($portfolioItem) ? $portfolioItem->description : "" !!}</td>
+                        <td>{!! isset($portfolioItem) ? Str::limit($portfolioItem->description, 100, "...") : "" !!}</td>
                         <td>{{ isset($portfolioItem) ? $portfolioItem->category->name : "" }}</td>
                         <td>{{ isset($portfolioItem) ? $portfolioItem->client : "" }}</td>
                         <td>{{ isset($portfolioItem) ? $portfolioItem->website : "" }}</td>
                         <td>{{ isset($portfolioItem) ? \Carbon\Carbon::parse($portfolioItem->created_at)->format("d-m-Y H:i") : "" }}</td>
                         <td>{{ isset($portfolioItem) ? \Carbon\Carbon::parse($portfolioItem->updated_at)->format("d-m-Y H:i") : "" }}</td>
-                        <td class="d-flex justify-content-end">
-                            <a href="{{ route("admin.portfolio-item.edit" , $portfolioItem->id)  }}" class="btn btn-warning btn-sm mx-1"><i class="fa fa-edit"></i> <strong>Güncelle</strong></a>
-                            <a href="{{ route("admin.portfolio-item.destroy", $portfolioItem->id) }}" class="btn btn-danger btn-sm btnDelete"><i class="fa fa-trash"></i> <strong>Sil</strong></a>
+                        <td>
+                            <div style="display: flex; justify-content: end; gap: 10px;">
+                                <a href="{{ route("admin.portfolio-item.edit", $portfolioItem->id) }}" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i> <strong>Güncelle</strong></a>
+                                <a href="{{ route("admin.portfolio-item.destroy", $portfolioItem->id) }}" class="btn btn-danger btn-sm btnDelete"><i class="fa fa-trash"></i> <strong>Sil</strong></a>
+                            </div>
                         </td>
                     </tr>
                 @endforeach
